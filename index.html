@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HIM Digi Solutions — Digital Marketing Agency in Hosur</title>
+  <meta name="description" content="HIM Digi Solutions helps local businesses grow through Google Ads, Meta Ads, Social Media Marketing, and Content Creation. Based in Hosur, Tamil Nadu." />
+  <meta name="keywords" content="digital marketing Hosur, Google Ads Tamil Nadu, Meta Ads agency, social media marketing, content creation India" />
+  <link rel="canonical" href="https://him-digi-solutions.vercel.app/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HIM Digi Solutions — Digital Marketing Agency" />
+  <meta property="og:description" content="We grow local businesses with good quality content and smart digital marketing." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://him-digi-solutions.vercel.app/" />
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <!-- Fonts via CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .hero-bg-glow1 {
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(255,107,43,0.08) 0%, transparent 65%);
+    }
+    .hero-bg-glow2 {
+      position: absolute;
+      bottom: -150px; left: -150px;
+      width: 600px; height: 600px;
+      background: radial-gradient(ellipse, rgba(0,212,232,0.07) 0%, transparent 65%);
+    }
+    .hero-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(0,212,232,0.08);
+      border: 1px solid rgba(0,212,232,0.2);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--cyan);
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow i { font-size: 0.9rem; }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero h1 .line-orange { color: var(--orange); }
+    .hero h1 .line-cyan { color: var(--cyan); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-top: 24px;
+      border-top: 1px solid var(--dark-4);
+    }
+    .hero-trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-trust-num {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .hero-trust-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .hero-trust-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--dark-4);
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+    }
+    .hero-card-main {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--cyan));
+    }
+    .hero-card-photo {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      height: 320px;
+      margin-bottom: 20px;
+    }
+    .hero-card-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hero-card-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .hero-card-role {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    .hero-card-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(37,211,102,0.1);
+      border: 1px solid rgba(37,211,102,0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: #25D366;
+      font-weight: 500;
+    }
+    .hero-card-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: #25D366;
+      border-radius: 50%;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .hero-floating-stat {
+      position: absolute;
+      background: var(--dark-3);
+      border: 1px solid var(--dark-4);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
+    }
+    .hero-floating-stat .icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+    .hero-floating-stat .stat-val {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .hero-floating-stat .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .stat-1 { top: -20px; right: -20px; }
+    .stat-1 .icon { background: rgba(255,107,43,0.15); color: var(--orange); }
+    .stat-2 { bottom: 80px; left: -24px; }
+    .stat-2 .icon { background: rgba(0,212,232,0.15); color: var(--cyan); }
+
+    /* ── SERVICES PREVIEW ── */
+    .services-preview {
+      padding: 100px 24px;
+      background: var(--dark-2);
+    }
+    .services-preview-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--dark-3);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--orange), var(--cyan));
+      transform: scaleX(0);
+      transition: transform var(--transition);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-glow-orange); border-color: rgba(255,107,43,0.2); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+    .service-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap var(--transition);
+    }
+    .service-card:hover .service-link { gap: 10px; }
+
+    /* ── WHY US ── */
+    .why-us {
+      padding: 100px 24px;
+    }
+    .why-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+    .why-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .why-item-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,107,43,0.1);
+      border: 1px solid rgba(255,107,43,0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .why-item-text h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .why-item-text p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; }
+
+    .why-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .why-visual-card {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .why-visual-card.accent {
+      background: linear-gradient(135deg, rgba(255,107,43,0.12), rgba(255,107,43,0.04));
+      border-color: rgba(255,107,43,0.25);
+    }
+    .why-visual-card.accent-cyan {
+      background: linear-gradient(135deg, rgba(0,212,232,0.1), rgba(0,212,232,0.03));
+      border-color: rgba(0,212,232,0.2);
+    }
+    .why-visual-num {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .why-visual-num span { color: var(--orange); }
+    .why-visual-label { font-size: 0.82rem; color: var(--text-muted); }
+    .why-visual-card.span-2 { grid-column: span 2; }
+
+    /* ── PROCESS ── */
+    .process {
+      padding: 100px 24px;
+      background: var(--dark-2);
+    }
+    .process-inner { max-width: var(--max-width); margin: 0 auto; }
+    .process-header { text-align: center; margin-bottom: 64px; }
+    .process-header .section-label { justify-content: center; }
+    .process-header .section-sub { margin: 0 auto; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: linear-gradient(90deg, var(--dark-4), var(--orange), var(--cyan), var(--dark-4));
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+    }
+    .step-num {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--dark-3);
+      border: 2px solid var(--dark-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .process-step:nth-child(2) .step-num { color: var(--cyan); border-color: rgba(0,212,232,0.3); }
+    .process-step:nth-child(3) .step-num { color: var(--orange); }
+    .process-step:nth-child(4) .step-num { color: var(--cyan); border-color: rgba(0,212,232,0.3); }
+    .process-step h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .process-step p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      padding: 100px 24px;
+    }
+    .cta-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--dark-2) 0%, var(--dark-3) 100%);
+      border: 1px solid var(--dark-4);
+      border-radius: 24px;
+      padding: 72px 64px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-inner::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%; transform: translateX(-50%);
+      width: 500px; height: 300px;
+      background: radial-gradient(ellipse, rgba(255,107,43,0.12) 0%, transparent 70%);
+    }
+    .cta-inner h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-inner p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1000px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .why-grid { grid-template-columns: 1fr; gap: 48px; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .cta-inner { padding: 48px 28px; }
+      .why-visual { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar injected by JS -->
+
+<!-- ══════════════ HERO ══════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-bg-glow1"></div>
+    <div class="hero-bg-glow2"></div>
+  </div>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-eyebrow reveal"><i class="ri-map-pin-line"></i> Hosur, Tamil Nadu · India</div>
+      <h1 class="reveal reveal-delay-1">
+        We Grow Your<br>
+        Business With<br>
+        <span class="line-orange">Quality Content</span><br>
+        <span class="line-cyan">&amp; Smart Ads</span>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        From storytelling to strategy — HIM Digi Solutions helps local businesses dominate digitally through Meta Ads, Google Ads, Social Media, and Content Creation.
+      </p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a href="pages/contact.html" class="btn btn-primary">Get a Free Audit →</a>
+        <a href="pages/services.html" class="btn btn-outline">Our Services</a>
+      </div>
+      <div class="hero-trust reveal reveal-delay-4">
+        <div class="hero-trust-item">
+          <span class="hero-trust-num">24/7</span>
+          <span class="hero-trust-label">Available</span>
+        </div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-num">4+</span>
+          <span class="hero-trust-label">Core Services</span>
+        </div>
+        <div class="hero-trust-divider"></div>
+        <div class="hero-trust-item">
+          <span class="hero-trust-num">100%</span>
+          <span class="hero-trust-label">Growth Focused</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal reveal-delay-2">
+      <div class="hero-floating-stat stat-1">
+        <div class="icon"><i class="ri-line-chart-line"></i></div>
+        <div>
+          <div class="stat-val">↑ ROI</div>
+          <div class="stat-label">Ad Performance</div>
+        </div>
+      </div>
+      <div class="hero-card-main">
+        <img src="images/himanshu.jpg" alt="Himanshu — Founder HIM Digi Solutions" class="hero-card-photo" />
+        <div class="hero-card-info">
+          <div>
+            <div class="hero-card-name">Himanshu</div>
+            <div class="hero-card-role">Founder &amp; Lead Strategist</div>
+          </div>
+          <div class="hero-card-badge">Available</div>
+        </div>
+      </div>
+      <div class="hero-floating-stat stat-2">
+        <div class="icon"><i class="ri-instagram-line"></i></div>
+        <div>
+          <div class="stat-val">Content</div>
+          <div class="stat-label">That Converts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ SERVICES PREVIEW ══════════════ -->
+<section class="services-preview">
+  <div class="services-preview-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label reveal">What We Offer</div>
+        <h2 class="section-title reveal reveal-delay-1">Services That <span>Drive Results</span></h2>
+      </div>
+      <a href="pages/services.html" class="btn btn-outline reveal">View All →</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon" style="background:rgba(255,107,43,0.12);color:var(--orange)"><i class="ri-google-fill"></i></div>
+        <h3>Google Ads / PPC</h3>
+        <p>Targeted search campaigns that put your business in front of customers who are actively searching for you.</p>
+        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon" style="background:rgba(0,212,232,0.1);color:var(--cyan)"><i class="ri-facebook-circle-fill"></i></div>
+        <h3>Meta Ads</h3>
+        <p>Facebook and Instagram ad campaigns crafted with audience psychology to drive real leads and sales.</p>
+        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon" style="background:rgba(255,107,43,0.12);color:var(--orange)"><i class="ri-instagram-line"></i></div>
+        <h3>Social Media Marketing</h3>
+        <p>Build a loyal audience and a strong brand presence across Instagram, Facebook, and beyond.</p>
+        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon" style="background:rgba(0,212,232,0.1);color:var(--cyan)"><i class="ri-video-line"></i></div>
+        <h3>Content Creation</h3>
+        <p>Scroll-stopping videos, reels, and visuals rooted in storytelling — from a filmmaker-turned-marketer.</p>
+        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ WHY US ══════════════ -->
+<section class="why-us">
+  <div class="why-grid">
+    <div>
+      <div class="section-label reveal">Why HIM Digi</div>
+      <h2 class="section-title reveal reveal-delay-1">Strategy Meets <span>Storytelling</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Most agencies run ads. We build systems. With a background in filmmaking and content creation, we understand what makes people stop, watch, and act.</p>
+      <div class="why-list">
+        <div class="why-item reveal reveal-delay-1">
+          <div class="why-item-icon"><i class="ri-film-line"></i></div>
+          <div class="why-item-text">
+            <h4>Filmmaker's Eye</h4>
+            <p>We understand audience psychology and storytelling — your ads and content actually connect.</p>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-2">
+          <div class="why-item-icon"><i class="ri-line-chart-line"></i></div>
+          <div class="why-item-text">
+            <h4>Growth-First Thinking</h4>
+            <p>Every piece of content and every rupee spent in ads is tied to a measurable growth goal.</p>
+          </div>
+        </div>
+        <div class="why-item reveal reveal-delay-3">
+          <div class="why-item-icon"><i class="ri-customer-service-2-line"></i></div>
+          <div class="why-item-text">
+            <h4>Available 24/7</h4>
+            <p>Campaigns don't sleep and neither do we. You get full access, full transparency, always.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual reveal reveal-delay-2">
+      <div class="why-visual-card accent">
+        <div class="why-visual-num"><span>∞</span></div>
+        <div class="why-visual-label">Dedication to Your Growth</div>
+      </div>
+      <div class="why-visual-card accent-cyan">
+        <div class="why-visual-num" style="color:var(--cyan)">24/7</div>
+        <div class="why-visual-label">Support Available</div>
+      </div>
+      <div class="why-visual-card span-2" style="background:var(--dark-2);border-color:var(--dark-4);padding:28px;display:flex;align-items:center;gap:20px">
+        <img src="images/himanshu.jpg" alt="Himanshu" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--orange)" />
+        <div>
+          <div style="font-family:var(--font-display);font-weight:700;color:var(--white);margin-bottom:4px">Himanshu · Founder</div>
+          <div style="font-size:0.82rem;color:var(--text-muted)">"I started in filmmaking and learned how to make things that actually connect. Now I bring that same energy to digital growth."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ PROCESS ══════════════ -->
+<section class="process">
+  <div class="process-inner">
+    <div class="process-header">
+      <div class="section-label reveal">How We Work</div>
+      <h2 class="section-title reveal reveal-delay-1">Simple 4-Step <span>Process</span></h2>
+      <p class="section-sub reveal reveal-delay-2">From first conversation to measurable results — here's how we make it happen.</p>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <h4>Free Audit</h4>
+        <p>We review your current digital presence and find gaps and opportunities.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <h4>Strategy Call</h4>
+        <p>A focused 30-min call to align on goals, budget, and the right channels.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <h4>Execution</h4>
+        <p>We launch campaigns and create content — fast, quality, and on-brand.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <h4>Grow &amp; Scale</h4>
+        <p>We track, optimize, and scale what works. You see the numbers grow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ CTA BANNER ══════════════ -->
+<section class="cta-banner">
+  <div class="cta-inner reveal">
+    <h2>Ready to Grow Your <span style="color:var(--orange)">Business?</span></h2>
+    <p>Get a free audit of your current digital presence — no strings attached.</p>
+    <div class="cta-actions">
+      <a href="pages/contact.html" class="btn btn-primary">Book Free Audit →</a>
+      <a href="https://wa.me/917448340452" class="btn btn-outline" target="_blank"><i class="ri-whatsapp-line"></i> Chat on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer injected by JS -->
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="js/components.js"></script>
+<script>
+  injectNavbarHome('home');
+  injectFooter(true);
+</script>
+<script src="js/main.js"></script>mv OneDrive/Desktop/him-digi-solutions/* .
+
+</body>
+</html>

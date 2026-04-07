@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — HIM Digi Solutions</title>
+  <meta name="description" content="Google Ads, Meta Ads, Social Media Marketing, and Content Creation services by HIM Digi Solutions, Hosur." />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .services-page { padding-bottom: 100px; }
+
+    .services-list {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .service-block.reverse { direction: rtl; }
+    .service-block.reverse > * { direction: ltr; }
+
+    .service-block-visual {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-block-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(255,107,43,0.06), transparent 70%);
+    }
+    .service-block-visual.cyan-bg::before {
+      background: radial-gradient(ellipse at center, rgba(0,212,232,0.07), transparent 70%);
+    }
+    .service-block-icon {
+      font-size: 5rem;
+      color: var(--orange);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .service-block-visual.cyan-bg .service-block-icon { color: var(--cyan); }
+    .service-block-visual-label {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .service-block-content {}
+    .service-block-content .section-label { margin-bottom: 12px; }
+    .service-block-content h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .service-block-content p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 28px;
+    }
+
+    .service-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .service-feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .service-feature i {
+      color: var(--cyan);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    /* Pricing hint */
+    .service-pricing-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(0,212,232,0.07);
+      border: 1px solid rgba(0,212,232,0.18);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--cyan);
+      margin-bottom: 24px;
+    }
+
+    .glow-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--dark-4), transparent);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .service-block { grid-template-columns: 1fr; gap: 36px; }
+      .service-block.reverse { direction: ltr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ PAGE HEADER ══════════════ -->
+<div class="page-header">
+  <div class="section-label reveal" style="justify-content:center">What We Do</div>
+  <h1 class="reveal reveal-delay-1">Our <span style="color:var(--orange)">Services</span></h1>
+  <p class="reveal reveal-delay-2">Every service we offer is built around one goal — measurable growth for your business.</p>
+</div>
+
+<div class="services-page">
+  <div class="services-list">
+
+    <!-- Service 1: Google Ads -->
+    <div class="service-block reveal">
+      <div class="service-block-visual">
+        <div class="service-block-icon"><i class="ri-google-fill"></i></div>
+        <div class="service-block-visual-label">Google Ads / PPC</div>
+      </div>
+      <div class="service-block-content">
+        <div class="section-label">Service 01</div>
+        <h2>Google Ads <span style="color:var(--orange)">&amp; PPC Campaigns</span></h2>
+        <p>When someone in your city searches for what you offer — we make sure they find you first. We set up, manage, and continuously optimize search, display, and shopping campaigns that bring real traffic and real leads.</p>
+        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Custom pricing based on your ad budget</div>
+        <div class="service-features">
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Keyword research &amp; competitor analysis</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Ad copywriting &amp; creative</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Bid strategy &amp; budget management</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Conversion tracking setup</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Monthly performance reports</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Get Started →</a>
+      </div>
+    </div>
+
+    <div class="glow-divider"></div>
+
+    <!-- Service 2: Meta Ads -->
+    <div class="service-block reverse reveal">
+      <div class="service-block-visual cyan-bg">
+        <div class="service-block-icon"><i class="ri-facebook-circle-fill"></i></div>
+        <div class="service-block-visual-label">Meta Ads (FB + Instagram)</div>
+      </div>
+      <div class="service-block-content">
+        <div class="section-label" style="color:var(--cyan)">Service 02</div>
+        <h2>Meta Ads <span style="color:var(--cyan)">(Facebook &amp; Instagram)</span></h2>
+        <p>Meta Ads is where storytelling meets performance. With a background in filmmaking and audience psychology, we build ad creatives that stop the scroll and campaigns that convert — not just generate impressions.</p>
+        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Custom pricing based on your ad budget</div>
+        <div class="service-features">
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Audience research &amp; targeting strategy</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Ad creative &amp; copywriting</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Retargeting &amp; lookalike audiences</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> A/B testing for best performance</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Lead generation &amp; conversion campaigns</div>
+        </div>
+        <a href="contact.html" class="btn btn-cyan">Get Started →</a>
+      </div>
+    </div>
+
+    <div class="glow-divider"></div>
+
+    <!-- Service 3: Social Media Marketing -->
+    <div class="service-block reveal">
+      <div class="service-block-visual">
+        <div class="service-block-icon"><i class="ri-instagram-line"></i></div>
+        <div class="service-block-visual-label">Social Media Marketing</div>
+      </div>
+      <div class="service-block-content">
+        <div class="section-label">Service 03</div>
+        <h2>Social Media <span style="color:var(--orange)">Marketing</span></h2>
+        <p>Your social profiles are your digital storefront. We build consistent, on-brand social media presences that grow your following, build trust, and turn followers into paying customers.</p>
+        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Monthly retainer packages available</div>
+        <div class="service-features">
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Profile optimization (Instagram, Facebook)</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Content calendar &amp; scheduling</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Reels, posts, stories creation</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Community management &amp; engagement</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Monthly analytics &amp; growth report</div>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Get Started →</a>
+      </div>
+    </div>
+
+    <div class="glow-divider"></div>
+
+    <!-- Service 4: Content Creation -->
+    <div class="service-block reverse reveal">
+      <div class="service-block-visual cyan-bg">
+        <div class="service-block-icon"><i class="ri-video-line"></i></div>
+        <div class="service-block-visual-label">Content Creation</div>
+      </div>
+      <div class="service-block-content">
+        <div class="section-label" style="color:var(--cyan)">Service 04</div>
+        <h2>Content <span style="color:var(--cyan)">Creation</span></h2>
+        <p>Content is the engine of modern marketing. Himanshu started as a filmmaker — which means every piece of content we create is built with a story arc, audience psychology, and an emotional hook. Not just pretty visuals.</p>
+        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Per-project &amp; monthly packages</div>
+        <div class="service-features">
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Short-form video &amp; Reels production</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Script writing &amp; storyboarding</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Graphic design &amp; brand visuals</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Product &amp; brand photography direction</div>
+          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Content strategy &amp; ideation</div>
+        </div>
+        <a href="contact.html" class="btn btn-cyan">Get Started →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<section style="padding:80px 24px;">
+  <div class="cta-inner reveal" style="max-width:var(--max-width);margin:0 auto;background:var(--dark-2);border:1px solid var(--dark-4);border-radius:24px;padding:64px;text-align:center;position:relative;overflow:hidden;">
+    <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--white);margin-bottom:12px">Not Sure Which Service You Need?</h2>
+    <p style="color:var(--text-muted);margin-bottom:32px">Let's talk. A free 30-minute audit will tell us exactly what will move the needle for your business.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary">Book Free Audit →</a>
+      <a href="https://wa.me/917448340452" class="btn btn-outline" target="_blank"><i class="ri-whatsapp-line"></i> WhatsApp Us</a>
+    </div>
+  </div>
+</section>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="../js/components.js"></script>
+<script>
+  injectNavbar('services');
+  injectFooter(false);
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

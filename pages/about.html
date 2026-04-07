@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — HIM Digi Solutions</title>
+  <meta name="description" content="Meet Himanshu, Founder of HIM Digi Solutions. A filmmaker-turned-digital-marketer helping local businesses grow in Hosur, Tamil Nadu." />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ── FOUNDER SECTION ── */
+    .founder-section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px 100px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .founder-photo-wrap {
+      position: sticky;
+      top: 100px;
+    }
+    .founder-photo-card {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: relative;
+    }
+    .founder-photo-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--cyan));
+    }
+    .founder-photo-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .founder-photo-info {
+      padding: 24px;
+    }
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .founder-title {
+      font-size: 0.85rem;
+      color: var(--orange);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .founder-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .founder-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+    .founder-meta-item i { color: var(--cyan); }
+    .founder-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--dark-4);
+    }
+    .founder-social a {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--dark-3);
+      border: 1px solid var(--dark-4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .founder-social a:hover { background: var(--orange); color: white; border-color: var(--orange); }
+
+    /* ── STORY ── */
+    .founder-story {}
+    .story-block {
+      margin-bottom: 48px;
+    }
+    .story-block h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .story-block h3 .story-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(255,107,43,0.12);
+      border: 1px solid rgba(255,107,43,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .story-block p {
+      font-size: 0.97rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .story-block p + p { margin-top: 12px; }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+      margin-bottom: 48px;
+    }
+    .skill-chip {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: 10px;
+      transition: var(--transition);
+    }
+    .skill-chip:hover { border-color: rgba(255,107,43,0.3); transform: translateY(-2px); }
+    .skill-chip i { color: var(--orange); font-size: 1.1rem; }
+    .skill-chip.cyan-chip i { color: var(--cyan); }
+    .skill-chip.cyan-chip:hover { border-color: rgba(0,212,232,0.3); }
+    .skill-chip span { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+
+    /* ── VALUES ── */
+    .values-section {
+      background: var(--dark-2);
+      padding: 80px 24px;
+    }
+    .values-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .values-header { text-align: center; margin-bottom: 56px; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .value-card {
+      background: var(--dark-3);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+      transition: var(--transition);
+    }
+    .value-card:hover { transform: translateY(-4px); border-color: rgba(255,107,43,0.25); }
+    .value-card-icon {
+      font-size: 2rem;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .value-card:nth-child(even) .value-card-icon { color: var(--cyan); }
+    .value-card h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .value-card p { font-size: 0.86rem; color: var(--text-muted); line-height: 1.65; }
+
+    @media (max-width: 900px) {
+      .founder-section { grid-template-columns: 1fr; gap: 48px; }
+      .founder-photo-wrap { position: static; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="section-label reveal" style="justify-content:center">The Story</div>
+  <h1 class="reveal reveal-delay-1">About <span style="color:var(--orange)">HIM Digi</span></h1>
+  <p class="reveal reveal-delay-2">A filmmaker who learned marketing. A strategist who never forgot storytelling.</p>
+</div>
+
+<!-- ══════════════ FOUNDER ══════════════ -->
+<div class="founder-section">
+  <div class="founder-photo-wrap reveal">
+    <div class="founder-photo-card">
+      <img src="../images/himanshu.jpg" alt="Himanshu — Founder HIM Digi Solutions" />
+      <div class="founder-photo-info">
+        <div class="founder-name">Himanshu</div>
+        <div class="founder-title">Founder &amp; Lead Strategist</div>
+        <div class="founder-meta">
+          <div class="founder-meta-item"><i class="ri-map-pin-line"></i> Hosur, Tamil Nadu</div>
+          <div class="founder-meta-item"><i class="ri-time-line"></i> Available 24/7</div>
+          <div class="founder-meta-item"><i class="ri-mail-line"></i> bothimanshu57@gmail.com</div>
+        </div>
+        <div class="founder-social">
+          <a href="https://www.instagram.com/_.creatix._" target="_blank"><i class="ri-instagram-line"></i></a>
+          <a href="https://www.linkedin.com/in/himanshu-pathak-s/" target="_blank"><i class="ri-linkedin-fill"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=61574700699127" target="_blank"><i class="ri-facebook-fill"></i></a>
+          <a href="https://wa.me/917448340452" target="_blank"><i class="ri-whatsapp-line"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="founder-story">
+    <div class="story-block reveal">
+      <h3><span class="story-icon"><i class="ri-film-line"></i></span> It Started With a Camera</h3>
+      <p>My journey began in filmmaking and digital content creation — a world where you learn to tell stories, understand people, and create things that actually make someone feel something.</p>
+      <p>I spent years behind the lens developing a deep understanding of audience psychology. What makes people stop? What makes them care? What makes them act? These aren't just filmmaking questions — they're marketing questions.</p>
+    </div>
+
+    <div class="story-block reveal reveal-delay-1">
+      <h3><span class="story-icon" style="background:rgba(0,212,232,0.1);border-color:rgba(0,212,232,0.2)"><i class="ri-line-chart-line" style="color:var(--cyan)"></i></span> Then Came the Growth Systems</h3>
+      <p>Over time, I became curious about the systems behind growth — the mechanics of why some businesses explode and others stay stuck. That curiosity led me to digital marketing, paid ads, and data-driven strategy.</p>
+      <p>I took a few Instagram accounts to significant heights through content creation alone. Then I discovered Meta Ads — and that's when I saw how combining great content with smart targeting creates something unstoppable.</p>
+    </div>
+
+    <div class="story-block reveal reveal-delay-2">
+      <h3><span class="story-icon"><i class="ri-rocket-line"></i></span> Why I Started HIM Digi Solutions</h3>
+      <p>Most local businesses in India have an incredible product or service but no idea how to reach the right people. Most agencies run cookie-cutter campaigns. I wanted to build something different — an agency that treats every business's story as unique, because it is.</p>
+      <p>HIM Digi Solutions is built on one belief: great marketing starts with a great story, and great stories create great businesses.</p>
+    </div>
+
+    <div class="skills-grid reveal">
+      <div class="skill-chip"><i class="ri-google-fill"></i><span>Google Ads &amp; PPC</span></div>
+      <div class="skill-chip cyan-chip"><i class="ri-facebook-circle-fill"></i><span>Meta Ads (FB + IG)</span></div>
+      <div class="skill-chip"><i class="ri-instagram-line"></i><span>Social Media Strategy</span></div>
+      <div class="skill-chip cyan-chip"><i class="ri-video-line"></i><span>Content Creation</span></div>
+      <div class="skill-chip"><i class="ri-film-line"></i><span>Filmmaking &amp; Storytelling</span></div>
+      <div class="skill-chip cyan-chip"><i class="ri-bar-chart-line"></i><span>Analytics &amp; Growth</span></div>
+    </div>
+
+    <div class="reveal">
+      <a href="contact.html" class="btn btn-primary">Work With Me →</a>
+      &nbsp;&nbsp;
+      <a href="https://wa.me/917448340452" class="btn btn-outline" target="_blank"><i class="ri-whatsapp-line"></i> Say Hello</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ VALUES ══════════════ -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="values-header">
+      <div class="section-label reveal" style="justify-content:center">What We Stand For</div>
+      <h2 class="section-title reveal reveal-delay-1">Our <span>Values</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-card-icon"><i class="ri-heart-line"></i></div>
+        <h4>Story First</h4>
+        <p>Every brand has a story worth telling. We find it, shape it, and make sure the right people hear it.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-card-icon"><i class="ri-bar-chart-box-line"></i></div>
+        <h4>Results Over Vanity</h4>
+        <p>Likes are nice. Leads are better. Revenue is the goal. We care about numbers that actually matter.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-card-icon"><i class="ri-shield-check-line"></i></div>
+        <h4>Full Transparency</h4>
+        <p>You'll always know what we're doing, why we're doing it, and what results it's driving.</p>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-card-icon"><i class="ri-time-line"></i></div>
+        <h4>Always Available</h4>
+        <p>Campaigns don't sleep. We're available 24/7 to monitor, respond, and optimize whenever needed.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-card-icon"><i class="ri-lightbulb-line"></i></div>
+        <h4>Continuous Learning</h4>
+        <p>The digital landscape changes fast. We stay ahead — so your strategy always reflects what works now.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-card-icon"><i class="ri-handshake-line"></i></div>
+        <h4>Long-term Thinking</h4>
+        <p>We're not here for a quick campaign. We want to be the team behind your business's growth for years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="../js/components.js"></script>
+<script>
+  injectNavbar('about');
+  injectFooter(false);
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>
