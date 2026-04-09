@@ -14,19 +14,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://him-digi-solutions.vercel.app/" />
 
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="a9TUlWzMV-1_qzaaVZ9f9XbYa_DRbA9KZMYCYnsiIds" />
   <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <!-- Fonts via CSS -->
+  <!-- Luxury Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JD2V4H6VV0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JD2V4H6VV0');
-</script>
   <style>
     /* ── HERO ── */
     .hero {
@@ -466,7 +460,121 @@
     }
     .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
 
-    /* RESPONSIVE */
+    .service-card { padding: 0; overflow: hidden; }
+    .service-card-img {
+      position: relative;
+      height: 180px;
+      overflow: hidden;
+    }
+    .service-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: brightness(0.7);
+    }
+    .service-card:hover .service-card-img img { transform: scale(1.06); filter: brightness(0.5); }
+    .service-card-img-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+    .service-icon-float {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      background: rgba(255,107,43,0.9);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      backdrop-filter: blur(4px);
+    }
+    .service-card-body { padding: 24px 26px 28px; }
+    .service-card-body h3 { margin-bottom: 8px; }
+    .service-card-body p { margin-bottom: 16px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 100px 24px;
+      background: var(--dark);
+    }
+    .testimonials-inner { max-width: var(--max-width); margin: 0 auto; }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testimonials-header .section-label { justify-content: center; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .testi-card {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .testi-card:hover { transform: translateY(-4px); border-color: rgba(255,107,43,0.25); box-shadow: var(--shadow-glow-orange); }
+    .testi-quote {
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--orange);
+      opacity: 0.4;
+      font-family: var(--font-display);
+      margin-bottom: 16px;
+    }
+    .testi-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+      color: #FFB800;
+      font-size: 0.9rem;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid var(--dark-4);
+    }
+    .testi-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+    .testi-role { font-size: 0.78rem; color: var(--text-muted); }
+    .testi-placeholder-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--dark-4);
+      font-style: italic;
+    }
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .testimonials-grid { grid-template-columns: 1fr; } }
     @media (max-width: 1000px) {
       .hero-grid { grid-template-columns: 1fr; }
       .hero-visual { display: none; }
@@ -567,28 +675,56 @@
     </div>
     <div class="services-grid">
       <div class="service-card reveal">
-        <div class="service-icon" style="background:rgba(255,107,43,0.12);color:var(--orange)"><i class="ri-google-fill"></i></div>
-        <h3>Google Ads / PPC</h3>
-        <p>Targeted search campaigns that put your business in front of customers who are actively searching for you.</p>
-        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80&auto=format&fit=crop" alt="Google Ads" />
+          <div class="service-card-img-overlay">
+            <div class="service-icon-float"><i class="ri-google-fill"></i></div>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <h3>Google Ads / PPC</h3>
+          <p>Targeted search campaigns that put your business in front of customers who are actively searching for you.</p>
+          <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        </div>
       </div>
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon" style="background:rgba(0,212,232,0.1);color:var(--cyan)"><i class="ri-facebook-circle-fill"></i></div>
-        <h3>Meta Ads</h3>
-        <p>Facebook and Instagram ad campaigns crafted with audience psychology to drive real leads and sales.</p>
-        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80&auto=format&fit=crop" alt="Meta Ads" />
+          <div class="service-card-img-overlay">
+            <div class="service-icon-float" style="background:rgba(0,212,232,0.9);color:var(--dark)"><i class="ri-facebook-circle-fill"></i></div>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <h3>Meta Ads</h3>
+          <p>Facebook and Instagram campaigns crafted with audience psychology to drive real leads and sales.</p>
+          <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        </div>
       </div>
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon" style="background:rgba(255,107,43,0.12);color:var(--orange)"><i class="ri-instagram-line"></i></div>
-        <h3>Social Media Marketing</h3>
-        <p>Build a loyal audience and a strong brand presence across Instagram, Facebook, and beyond.</p>
-        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80&auto=format&fit=crop" alt="Social Media Marketing" />
+          <div class="service-card-img-overlay">
+            <div class="service-icon-float"><i class="ri-instagram-line"></i></div>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <h3>Social Media Marketing</h3>
+          <p>Build a loyal audience and a strong brand presence across Instagram, Facebook, and beyond.</p>
+          <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        </div>
       </div>
       <div class="service-card reveal reveal-delay-3">
-        <div class="service-icon" style="background:rgba(0,212,232,0.1);color:var(--cyan)"><i class="ri-video-line"></i></div>
-        <h3>Content Creation</h3>
-        <p>Scroll-stopping videos, reels, and visuals rooted in storytelling — from a filmmaker-turned-marketer.</p>
-        <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        <div class="service-card-img">
+          <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=600&q=80&auto=format&fit=crop" alt="Content Creation" />
+          <div class="service-card-img-overlay">
+            <div class="service-icon-float" style="background:rgba(0,212,232,0.9);color:var(--dark)"><i class="ri-video-line"></i></div>
+          </div>
+        </div>
+        <div class="service-card-body">
+          <h3>Content Creation</h3>
+          <p>Scroll-stopping videos, reels, and visuals rooted in storytelling — from a filmmaker-turned-marketer.</p>
+          <a href="pages/services.html" class="service-link">Learn more <i class="ri-arrow-right-line"></i></a>
+        </div>
       </div>
     </div>
   </div>
@@ -678,6 +814,62 @@
   </div>
 </section>
 
+<!-- ══════════════ TESTIMONIALS ══════════════ -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-header">
+      <div class="section-label reveal">Client Love</div>
+      <h2 class="section-title reveal reveal-delay-1">What Clients <span>Say</span></h2>
+      <p class="section-sub reveal reveal-delay-2">Real feedback from real businesses we've worked with.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">
+          <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+        </div>
+        <p class="testi-text">Himanshu completely transformed our Instagram presence. Within 2 months our enquiries doubled — the content quality and ad strategy was unlike anything we'd seen before.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--orange),#ff9a5c)">R</div>
+          <div>
+            <div class="testi-name">Rahul Sharma</div>
+            <div class="testi-role">Owner, Local Restaurant · Hosur</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">
+          <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
+        </div>
+        <p class="testi-text">Our Google Ads were burning money before HIM Digi stepped in. They restructured the whole campaign and we saw a 3x improvement in leads within the first month.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--cyan),#00a8b8)">P</div>
+          <div>
+            <div class="testi-name">Priya Nair</div>
+            <div class="testi-role">Founder, Education Startup · Bangalore</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-quote">"</div>
+        <div class="testi-stars">
+          <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i>
+        </div>
+        <p class="testi-text">What I love most is that Himanshu actually understands content. He's not just running ads — he thinks about the story, the emotion, the hook. That's rare in a marketer.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#a855f7,#7c3aed)">A</div>
+          <div>
+            <div class="testi-name">Arjun Mehta</div>
+            <div class="testi-role">Director, Retail Brand · Chennai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="testi-placeholder-note">⚠️ Replace these with your real client testimonials when available</p>
+  </div>
+</section>
+
 <!-- ══════════════ CTA BANNER ══════════════ -->
 <section class="cta-banner">
   <div class="cta-inner reveal">
@@ -692,13 +884,13 @@
 
 <!-- Footer injected by JS -->
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Microsoft Clarity -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w8u5elv9se");</script>
 <script src="js/components.js"></script>
 <script>
   injectNavbarHome('home');
   injectFooter(true);
 </script>
 <script src="js/main.js"></script>
-
 </body>
 </html>

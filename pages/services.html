@@ -5,17 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services — HIM Digi Solutions</title>
   <meta name="description" content="Google Ads, Meta Ads, Social Media Marketing, and Content Creation services by HIM Digi Solutions, Hosur." />
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="a9TUlWzMV-1_qzaaVZ9f9XbYa_DRbA9KZMYCYnsiIds" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JD2V4H6VV0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JD2V4H6VV0');
-</script>
   <style>
     .services-page { padding-bottom: 100px; }
 
@@ -38,40 +32,53 @@
     .service-block.reverse > * { direction: ltr; }
 
     .service-block-visual {
-      background: var(--dark-2);
-      border: 1px solid var(--dark-4);
       border-radius: var(--radius-lg);
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 280px;
-      position: relative;
       overflow: hidden;
+      min-height: 380px;
+      position: relative;
     }
-    .service-block-visual::before {
-      content: '';
+    .service-block-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.65);
+      transition: transform 0.6s ease, filter 0.6s ease;
+      min-height: 380px;
+    }
+    .service-block:hover .service-block-visual img {
+      transform: scale(1.04);
+      filter: brightness(0.5);
+    }
+    .service-block-visual-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, rgba(255,107,43,0.06), transparent 70%);
-    }
-    .service-block-visual.cyan-bg::before {
-      background: radial-gradient(ellipse at center, rgba(0,212,232,0.07), transparent 70%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      background: linear-gradient(to top, rgba(10,10,15,0.85) 0%, transparent 55%);
     }
     .service-block-icon {
-      font-size: 5rem;
-      color: var(--orange);
-      margin-bottom: 20px;
-      position: relative;
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: var(--orange);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 14px;
     }
-    .service-block-visual.cyan-bg .service-block-icon { color: var(--cyan); }
+    .service-block-visual.cyan-bg .service-block-icon {
+      background: var(--cyan);
+      color: var(--dark);
+    }
     .service-block-visual-label {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: var(--white);
-      text-align: center;
     }
 
     .service-block-content {}
@@ -150,8 +157,11 @@
     <!-- Service 1: Google Ads -->
     <div class="service-block reveal">
       <div class="service-block-visual">
-        <div class="service-block-icon"><i class="ri-google-fill"></i></div>
-        <div class="service-block-visual-label">Google Ads / PPC</div>
+        <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&q=80&auto=format&fit=crop" alt="Google Ads Campaign" />
+        <div class="service-block-visual-overlay">
+          <div class="service-block-icon"><i class="ri-google-fill"></i></div>
+          <div class="service-block-visual-label">Google Ads / PPC</div>
+        </div>
       </div>
       <div class="service-block-content">
         <div class="section-label">Service 01</div>
@@ -174,8 +184,11 @@
     <!-- Service 2: Meta Ads -->
     <div class="service-block reverse reveal">
       <div class="service-block-visual cyan-bg">
-        <div class="service-block-icon"><i class="ri-facebook-circle-fill"></i></div>
-        <div class="service-block-visual-label">Meta Ads (FB + Instagram)</div>
+        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&auto=format&fit=crop" alt="Meta Ads Facebook Instagram" />
+        <div class="service-block-visual-overlay">
+          <div class="service-block-icon"><i class="ri-facebook-circle-fill"></i></div>
+          <div class="service-block-visual-label">Meta Ads (FB + Instagram)</div>
+        </div>
       </div>
       <div class="service-block-content">
         <div class="section-label" style="color:var(--cyan)">Service 02</div>
@@ -198,8 +211,11 @@
     <!-- Service 3: Social Media Marketing -->
     <div class="service-block reveal">
       <div class="service-block-visual">
-        <div class="service-block-icon"><i class="ri-instagram-line"></i></div>
-        <div class="service-block-visual-label">Social Media Marketing</div>
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&auto=format&fit=crop" alt="Social Media Marketing" />
+        <div class="service-block-visual-overlay">
+          <div class="service-block-icon"><i class="ri-instagram-line"></i></div>
+          <div class="service-block-visual-label">Social Media Marketing</div>
+        </div>
       </div>
       <div class="service-block-content">
         <div class="section-label">Service 03</div>
@@ -222,8 +238,11 @@
     <!-- Service 4: Content Creation -->
     <div class="service-block reverse reveal">
       <div class="service-block-visual cyan-bg">
-        <div class="service-block-icon"><i class="ri-video-line"></i></div>
-        <div class="service-block-visual-label">Content Creation</div>
+        <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&q=80&auto=format&fit=crop" alt="Content Creation Video" />
+        <div class="service-block-visual-overlay">
+          <div class="service-block-icon"><i class="ri-video-line"></i></div>
+          <div class="service-block-visual-label">Content Creation</div>
+        </div>
       </div>
       <div class="service-block-content">
         <div class="section-label" style="color:var(--cyan)">Service 04</div>
@@ -256,7 +275,7 @@
   </div>
 </section>
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w8u5elv9se");</script>
 <script src="../js/components.js"></script>
 <script>
   injectNavbar('services');
