@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Settings — HIM Digi Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name">Admin</div><div class="sidebar-user-role" id="sidebar-user-role">Administrator</div></div></div></div>
+  </aside>
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button>
+        <div class="topbar-title">Settings</div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div>
+      </div>
+    </header>
+    <main class="admin-content">
+      <div class="page-header-admin">
+        <div><h1>Settings</h1><p>Manage site configuration, tracking IDs, and contact details</p></div>
+      </div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('general',this)">General</div>
+        <div class="tab" onclick="switchTab('tracking',this)">Tracking & Analytics</div>
+        <div class="tab" onclick="switchTab('seo',this)">SEO</div>
+        <div class="tab" onclick="switchTab('social',this)">Social Media</div>
+      </div>
+
+      <!-- General Tab -->
+      <div class="tab-panel active" id="tab-general">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Business Information</span></div>
+          <div class="card-body">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Agency Name</label><input class="form-control" id="s-site_name" /></div>
+              <div class="form-group"><label class="form-label">Tagline</label><input class="form-control" id="s-tagline" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="s-email" type="email" /></div>
+              <div class="form-group"><label class="form-label">Phone</label><input class="form-control" id="s-phone" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">WhatsApp Number</label><input class="form-control" id="s-whatsapp" /></div>
+              <div class="form-group"><label class="form-label">Working Hours</label><input class="form-control" id="s-working_hours" /></div>
+            </div>
+            <div class="form-group"><label class="form-label">Address</label><input class="form-control" id="s-address" /></div>
+            <button class="btn btn-primary" onclick="saveSettings()"><i class="ri-save-line"></i> Save Changes</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tracking Tab -->
+      <div class="tab-panel" id="tab-tracking">
+        <div class="alert alert-info"><i class="ri-information-line"></i> Update these IDs to change tracking across the entire website. After updating, manually replace in HTML files and redeploy.</div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Pixel & Analytics IDs</span></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Google Analytics 4 (GA4) ID</label>
+              <input class="form-control" id="s-ga4_id" placeholder="G-JNYHG2BRCN" />
+              <div class="form-hint">Get from analytics.google.com → Admin → Data Streams</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Google Ads Conversion ID</label>
+              <input class="form-control" id="s-gads_id" placeholder="AW-XXXXXXXXX" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Meta Pixel ID</label>
+              <input class="form-control" id="s-meta_pixel" placeholder="Your Meta Pixel ID" />
+              <div class="form-hint">Get from business.facebook.com → Events Manager</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Microsoft Clarity ID</label>
+              <input class="form-control" id="s-clarity_id" placeholder="Your Clarity ID" />
+            </div>
+            <div class="alert alert-warning"><i class="ri-alert-line"></i> <strong>Verified:</strong> Meta Pixel 1000689375717976 ✅ | Google Ads AW-18051983594 ✅ | Clarity w8u5elv9se ✅ | GA4: Replace G-JNYHG2BRCN with your real ID</div>
+            <button class="btn btn-primary" onclick="saveSettings()"><i class="ri-save-line"></i> Save IDs</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Tab -->
+      <div class="tab-panel" id="tab-seo">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header"><span class="card-title">Homepage SEO</span></div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Meta Title (Homepage)</label>
+              <input class="form-control" id="s-meta_title_home" />
+              <div class="form-hint" id="title-count">0/60 characters (ideal: under 60)</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Meta Description (Homepage)</label>
+              <textarea class="form-control" id="s-meta_desc_home" rows="3"></textarea>
+              <div class="form-hint" id="desc-count">0/160 characters (ideal: 120-160)</div>
+            </div>
+            <button class="btn btn-primary" onclick="saveSettings()"><i class="ri-save-line"></i> Save SEO</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title">Technical SEO Files</span></div>
+          <div class="card-body">
+            <div style="display:flex;gap:12px;flex-wrap:wrap">
+              <a href="../sitemap.xml" target="_blank" class="btn btn-outline"><i class="ri-file-code-line"></i> View sitemap.xml</a>
+              <a href="../robots.txt" target="_blank" class="btn btn-outline"><i class="ri-robot-line"></i> View robots.txt</a>
+              <a href="https://search.google.com/search-console" target="_blank" class="btn btn-outline"><i class="ri-google-line"></i> Google Search Console</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Tab -->
+      <div class="tab-panel" id="tab-social">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Social Media Links</span></div>
+          <div class="card-body">
+            <div class="form-group"><label class="form-label">Instagram URL</label><input class="form-control" id="s-instagram" /></div>
+            <div class="form-group"><label class="form-label">LinkedIn URL</label><input class="form-control" id="s-linkedin" /></div>
+            <div class="form-group"><label class="form-label">Facebook URL</label><input class="form-control" id="s-facebook" /></div>
+            <button class="btn btn-primary" onclick="saveSettings()"><i class="ri-save-line"></i> Save Links</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+<script>
+const user = Auth.require();
+if (user) {
+  if (!Auth.can(user,'admin')) { toast('Admin access required','error'); setTimeout(()=>window.location.href='dashboard.html',1500); }
+  buildSidebar(user, 'settings');
+
+  function loadSettings() {
+    const s = DB.get('settings') || {};
+    Object.keys(s).forEach(k => {
+      const el = document.getElementById('s-'+k);
+      if (el) el.value = s[k] || '';
+    });
+    updateCounts();
+  }
+
+  function saveSettings() {
+    const s = DB.get('settings') || {};
+    document.querySelectorAll('[id^="s-"]').forEach(el => {
+      const key = el.id.replace('s-','');
+      s[key] = el.value;
+    });
+    DB.set('settings', s);
+    DB.push('activity', { type:'update', icon:'ri-settings-3-line', color:'orange', text:`Settings updated by ${user.name}`, time:'Just now' });
+    toast('Settings saved successfully!');
+  }
+
+  function updateCounts() {
+    const title = document.getElementById('s-meta_title_home');
+    const desc = document.getElementById('s-meta_desc_home');
+    if (title) {
+      const tlen = (title.value||'').length;
+      document.getElementById('title-count').textContent = `${tlen}/60 characters ${tlen>60?'⚠️ Too long':'✅'}`;
+      title.addEventListener('input', ()=>{ const l=(title.value||'').length; document.getElementById('title-count').textContent=`${l}/60 characters ${l>60?'⚠️ Too long':'✅'}`; });
+    }
+    if (desc) {
+      const dlen = (desc.value||'').length;
+      document.getElementById('desc-count').textContent = `${dlen}/160 characters ${dlen>160?'⚠️ Too long':dlen<120?'⚠️ Too short':'✅'}`;
+      desc.addEventListener('input', ()=>{ const l=(desc.value||'').length; document.getElementById('desc-count').textContent=`${l}/160 characters ${l>160?'⚠️ Too long':l<120?'⚠️ Too short':'✅'}`; });
+    }
+  }
+
+  function switchTab(name, el) {
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-'+name).classList.add('active');
+  }
+
+  loadSettings();
+}
+</script>
+</body>
+</html>

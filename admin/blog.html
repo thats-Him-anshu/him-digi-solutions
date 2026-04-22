@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — HIM Digi Admin</title><meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name"></div><div class="sidebar-user-role" id="sidebar-user-role"></div></div></div></div>
+  </aside>
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Blog Posts</div></div>
+      <div class="topbar-right"><div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div></div>
+    </header>
+    <main class="admin-content">
+      <div class="page-header-admin">
+        <div><h1>Blog Posts</h1><p>Manage your published articles</p></div>
+        <a href="../pages/blog/index.html" target="_blank" class="btn btn-outline"><i class="ri-external-link-line"></i> View Blog</a>
+      </div>
+
+      <div class="alert alert-info" style="margin-bottom:20px"><i class="ri-information-line"></i> To add new blog posts, create a new HTML file in <code>pages/blog/</code> following the existing post structure, then add it to <code>pages/blog/index.html</code>.</div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>How to Run Google Ads for Local Business in India (2026)</strong><br><span style="font-size:0.73rem;color:var(--muted)">google-ads-local-business-india.html</span></td>
+                <td><span class="badge new">Google Ads</span></td>
+                <td style="font-size:0.82rem;color:var(--muted)">Apr 2026</td>
+                <td><span class="badge converted"><span class="badge-dot"></span>Published</span></td>
+                <td><div style="display:flex;gap:6px">
+                  <a href="../pages/blog/google-ads-local-business-india.html" target="_blank" class="btn btn-sm btn-outline btn-icon"><i class="ri-eye-line"></i></a>
+                </div></td>
+              </tr>
+              <tr>
+                <td><strong>How Much Do Meta Ads Cost in India in 2026?</strong><br><span style="font-size:0.73rem;color:var(--muted)">meta-ads-cost-india-2026.html</span></td>
+                <td><span class="badge contacted">Meta Ads</span></td>
+                <td style="font-size:0.82rem;color:var(--muted)">Apr 2026</td>
+                <td><span class="badge converted"><span class="badge-dot"></span>Published</span></td>
+                <td><div style="display:flex;gap:6px">
+                  <a href="../pages/blog/meta-ads-cost-india-2026.html" target="_blank" class="btn btn-sm btn-outline btn-icon"><i class="ri-eye-line"></i></a>
+                </div></td>
+              </tr>
+              <tr>
+                <td><strong>Social Media Marketing for Local Businesses in Hosur & Tamil Nadu</strong><br><span style="font-size:0.73rem;color:var(--muted)">social-media-marketing-hosur.html</span></td>
+                <td><span class="badge staff">Social Media</span></td>
+                <td style="font-size:0.82rem;color:var(--muted)">Apr 2026</td>
+                <td><span class="badge converted"><span class="badge-dot"></span>Published</span></td>
+                <td><div style="display:flex;gap:6px">
+                  <a href="../pages/blog/social-media-marketing-hosur.html" target="_blank" class="btn btn-sm btn-outline btn-icon"><i class="ri-eye-line"></i></a>
+                </div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <div style="font-size:0.82rem;color:var(--muted)">3 posts published</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <div class="card-header"><span class="card-title">New Blog Post Template</span></div>
+        <div class="card-body">
+          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Copy the template below as a starting point for your next blog post:</p>
+          <div style="background:var(--surface2);border-radius:8px;padding:16px;font-family:monospace;font-size:0.78rem;color:var(--cyan);line-height:1.6">
+            File: pages/blog/your-post-slug.html<br>
+            Copy from: google-ads-local-business-india.html<br>
+            Update: title, meta description, h1, article content, schema dates<br>
+            Add to: pages/blog/index.html as a new blog-card
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+const user = Auth.require();
+if (user) buildSidebar(user, 'blog');
+</script>
+</body>
+</html>

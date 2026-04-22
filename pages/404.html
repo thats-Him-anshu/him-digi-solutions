@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | HIM Digi Solutions</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="manifest" href="/manifest.json" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .notfound {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .notfound-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(0,212,232,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .notfound-inner { position: relative; z-index: 1; max-width: 560px; }
+    .notfound-code {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--orange), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .notfound-inner h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .notfound-inner p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .notfound-links {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .quick-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: 10px;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      transition: var(--transition);
+    }
+    .quick-link:hover { border-color: var(--orange); color: var(--white); transform: translateY(-2px); }
+    .quick-link i { color: var(--orange); }
+  </style>
+</head>
+<body>
+<div class="notfound">
+  <div class="notfound-glow"></div>
+  <div class="notfound-inner">
+    <div class="notfound-code">404</div>
+    <h2>Page Not Found</h2>
+    <p>The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+    <div class="notfound-links">
+      <a href="../index.html" class="btn btn-primary">← Back to Home</a>
+      <a href="contact.html" class="btn btn-outline">Get Free Audit</a>
+    </div>
+    <div class="quick-links">
+      <a href="services.html" class="quick-link"><i class="ri-settings-3-line"></i> Services</a>
+      <a href="about.html" class="quick-link"><i class="ri-user-line"></i> About Us</a>
+      <a href="blog/index.html" class="quick-link"><i class="ri-article-line"></i> Blog</a>
+      <a href="contact.html" class="quick-link"><i class="ri-mail-line"></i> Contact</a>
+    </div>
+  </div>
+</div>
+
+<script src="../js/components.js"></script>
+<script>injectNavbar(''); injectFooter(false);</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

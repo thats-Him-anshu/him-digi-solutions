@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /pages/thankyou.html
+
+Sitemap: https://himdigisolutions.in/sitemap.xml
+
+Disallow: /admin/

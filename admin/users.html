@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users — HIM Digi Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name"></div><div class="sidebar-user-role" id="sidebar-user-role"></div></div></div></div>
+  </aside>
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">User Management</div></div>
+      <div class="topbar-right"><div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div></div>
+    </header>
+    <main class="admin-content">
+      <div class="page-header-admin">
+        <div><h1>Users</h1><p>Manage admin panel access and roles</p></div>
+        <button class="btn btn-primary" onclick="document.getElementById('add-user-modal').classList.add('open')"><i class="ri-add-line"></i> Add User</button>
+      </div>
+
+      <div class="alert alert-warning" style="margin-bottom:20px">
+        <i class="ri-alert-line"></i> <strong>Note:</strong> This is a frontend demo. In production, user credentials should be managed server-side with hashed passwords. Current credentials are in <code>admin/js/admin.js</code> in the ADMIN_USERS array.
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>User</th><th>Email</th><th>Role</th><th>Permissions</th><th>Actions</th></tr></thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <div class="card-header"><span class="card-title">Role Permissions</span></div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+            <div style="padding:20px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border)">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="badge admin">Admin</span></div>
+              <ul style="font-size:0.82rem;color:var(--text-muted,var(--muted));display:flex;flex-direction:column;gap:6px">
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Full access to all sections</li>
+                <li><i class="ri-check-line" style="color:var(--green)"></i> User management</li>
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Settings & SEO</li>
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Leads & content</li>
+              </ul>
+            </div>
+            <div style="padding:20px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border)">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="badge editor">Editor</span></div>
+              <ul style="font-size:0.82rem;color:var(--muted);display:flex;flex-direction:column;gap:6px">
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Leads management</li>
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Content editing</li>
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Blog posts</li>
+                <li><i class="ri-close-line" style="color:var(--red)"></i> No settings access</li>
+              </ul>
+            </div>
+            <div style="padding:20px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border)">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span class="badge staff">Staff</span></div>
+              <ul style="font-size:0.82rem;color:var(--muted);display:flex;flex-direction:column;gap:6px">
+                <li><i class="ri-check-line" style="color:var(--green)"></i> View leads</li>
+                <li><i class="ri-check-line" style="color:var(--green)"></i> Update lead status</li>
+                <li><i class="ri-close-line" style="color:var(--red)"></i> No content editing</li>
+                <li><i class="ri-close-line" style="color:var(--red)"></i> No settings access</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="add-user-modal">
+  <div class="modal">
+    <div class="modal-header"><span class="modal-title">Add New User</span><button class="modal-close" onclick="document.getElementById('add-user-modal').classList.remove('open')"><i class="ri-close-line"></i></button></div>
+    <div class="modal-body">
+      <div class="alert alert-warning"><i class="ri-alert-line"></i> Add credentials to ADMIN_USERS array in <strong>admin/js/admin.js</strong></div>
+      <div class="form-group"><label class="form-label">Full Name</label><input class="form-control" id="new-name" placeholder="Staff name" /></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="new-email" type="email" placeholder="staff@himdigisolutions.in" /></div>
+      <div class="form-group"><label class="form-label">Role</label>
+        <select class="form-control" id="new-role"><option value="staff">Staff</option><option value="editor">Editor</option><option value="admin">Admin</option></select>
+      </div>
+      <div class="form-group"><label class="form-label">Temporary Password</label><input class="form-control" id="new-password" type="password" placeholder="Set a strong password" /></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="document.getElementById('add-user-modal').classList.remove('open')">Cancel</button>
+      <button class="btn btn-primary" onclick="toast('Add credentials to admin.js ADMIN_USERS array','warning');document.getElementById('add-user-modal').classList.remove('open')"><i class="ri-save-line"></i> Save User</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+<script>
+const user = Auth.require();
+if (user) {
+  if (!Auth.can(user,'admin')) { toast('Admin access required','error'); setTimeout(()=>window.location.href='dashboard.html',1500); }
+  buildSidebar(user, 'users');
+
+  const roleColors = {admin:'orange',editor:'cyan',staff:'blue'};
+  document.getElementById('users-tbody').innerHTML = ADMIN_USERS.map(u=>`
+    <tr>
+      <td><div style="display:flex;align-items:center;gap:10px">
+        <div class="sidebar-avatar" style="width:34px;height:34px;font-size:0.85rem">${u.avatar}</div>
+        <strong>${u.name}</strong>
+      </div></td>
+      <td style="font-size:0.85rem;color:var(--muted)">${u.email}</td>
+      <td><span class="badge ${u.role}">${u.role.charAt(0).toUpperCase()+u.role.slice(1)}</span></td>
+      <td style="font-size:0.8rem;color:var(--muted)">${u.role==='admin'?'Full Access':u.role==='editor'?'Content + Leads':'Leads Only'}</td>
+      <td><div style="display:flex;gap:6px">
+        <button class="btn btn-sm btn-outline btn-icon" onclick="toast('Edit credentials in admin.js','warning')" title="Edit"><i class="ri-edit-line"></i></button>
+        ${u.id!==1?`<button class="btn btn-sm btn-danger btn-icon" onclick="toast('Remove from ADMIN_USERS in admin.js','warning')" title="Delete"><i class="ri-delete-bin-line"></i></button>`:''}
+      </div></td>
+    </tr>`).join('');
+}
+</script>
+</body>
+</html>

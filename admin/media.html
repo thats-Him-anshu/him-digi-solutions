@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media — HIM Digi Admin</title><meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name"></div><div class="sidebar-user-role" id="sidebar-user-role"></div></div></div></div>
+  </aside>
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Media</div></div>
+      <div class="topbar-right"><div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div></div>
+    </header>
+    <main class="admin-content">
+      <div class="page-header-admin"><div><h1>Media Library</h1><p>Images and assets in your project</p></div></div>
+
+      <div class="alert alert-info" style="margin-bottom:20px"><i class="ri-information-line"></i> File uploads require a backend server. Add files to your <code>images/</code> folder in VS Code and push to GitHub. Below shows currently tracked assets.</div>
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <div class="card" style="overflow:hidden">
+          <img src="../images/himanshu.jpg" alt="Himanshu" style="width:100%;height:160px;object-fit:cover" />
+          <div style="padding:12px">
+            <div style="font-size:0.82rem;font-weight:600;color:var(--white)">himanshu.webp</div>
+            <div style="font-size:0.73rem;color:var(--muted)">Profile photo · WebP</div>
+            <div style="display:flex;gap:6px;margin-top:10px">
+              <button class="btn btn-sm btn-outline btn-icon" onclick="navigator.clipboard.writeText('../images/himanshu.jpg');toast('Path copied!')"><i class="ri-clipboard-line"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;border:2px dashed var(--border);cursor:pointer" onclick="toast('Add images to your /images folder in VS Code and push to GitHub','warning')">
+          <i class="ri-add-line" style="font-size:2rem;color:var(--muted);margin-bottom:8px"></i>
+          <div style="font-size:0.82rem;color:var(--muted);text-align:center">Add to /images folder<br>in VS Code</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+const user = Auth.require();
+if (user) buildSidebar(user, 'media');
+</script>
+</body>
+</html>

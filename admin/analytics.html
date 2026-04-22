@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analytics — HIM Digi Admin</title><meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name"></div><div class="sidebar-user-role" id="sidebar-user-role"></div></div></div></div>
+  </aside>
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Analytics</div></div>
+      <div class="topbar-right"><div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div></div>
+    </header>
+    <main class="admin-content">
+      <div class="page-header-admin"><div><h1>Analytics Overview</h1><p>Quick access to all your analytics platforms</p></div></div>
+
+      <div class="alert alert-info" style="margin-bottom:24px">
+        <i class="ri-information-line"></i> Full analytics data requires connecting the Google Analytics API. Below are direct links to your dashboards and a summary of what each tracks.
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px">
+        <div class="card">
+          <div class="card-header" style="border-bottom-color:rgba(34,197,94,0.3)"><span class="card-title" style="color:var(--green)"><i class="ri-google-line"></i> Google Analytics 4</span></div>
+          <div class="card-body">
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Tracks visitors, sessions, page views, traffic sources, and user demographics.</p>
+            <div style="font-size:0.78rem;color:var(--muted);margin-bottom:16px">ID: <strong style="color:var(--green)" id="ga4-id-display">G-JNYHG2BRCN</strong></div>
+            <a href="https://analytics.google.com" target="_blank" class="btn btn-outline btn-sm"><i class="ri-external-link-line"></i> Open GA4</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" style="border-bottom-color:rgba(59,130,246,0.3)"><span class="card-title" style="color:var(--blue)"><i class="ri-facebook-circle-line"></i> Meta Pixel</span></div>
+          <div class="card-body">
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Tracks ad conversions, retargeting audiences, and Facebook/Instagram campaign performance.</p>
+            <div style="font-size:0.78rem;color:var(--muted);margin-bottom:16px">ID: <strong style="color:var(--blue)">1000689375717976</strong> ✅</div>
+            <a href="https://business.facebook.com/events_manager" target="_blank" class="btn btn-outline btn-sm"><i class="ri-external-link-line"></i> Open Meta Events</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" style="border-bottom-color:rgba(0,212,232,0.3)"><span class="card-title" style="color:var(--cyan)"><i class="ri-eye-line"></i> Microsoft Clarity</span></div>
+          <div class="card-body">
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Session recordings, heatmaps, click maps, and scroll depth analysis.</p>
+            <div style="font-size:0.78rem;color:var(--muted);margin-bottom:16px">ID: <strong style="color:var(--cyan)">w8u5elv9se</strong> ✅</div>
+            <a href="https://clarity.microsoft.com" target="_blank" class="btn btn-outline btn-sm"><i class="ri-external-link-line"></i> Open Clarity</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="ri-search-line" style="color:var(--orange)"></i> Google Search Console</span></div>
+          <div class="card-body">
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Monitor search rankings, click-through rates, impressions, and index coverage.</p>
+            <a href="https://search.google.com/search-console" target="_blank" class="btn btn-outline btn-sm"><i class="ri-external-link-line"></i> Open Search Console</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="ri-speed-line" style="color:var(--yellow)"></i> PageSpeed Insights</span></div>
+          <div class="card-body">
+            <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Check your website's performance score, Core Web Vitals, and speed metrics.</p>
+            <a href="https://pagespeed.web.dev/analysis?url=https://himdigisolutions.in" target="_blank" class="btn btn-outline btn-sm"><i class="ri-external-link-line"></i> Run PageSpeed Test</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:20px">
+        <div class="card-header"><span class="card-title">Lead Source Breakdown</span></div>
+        <div class="card-body" id="source-chart"></div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+const user = Auth.require();
+if (user) {
+  buildSidebar(user, 'analytics');
+  const s = DB.get('settings') || {};
+  if (s.ga4_id) document.getElementById('ga4-id-display').textContent = s.ga4_id;
+
+  const leads = DB.get('leads') || [];
+  const sources = {};
+  leads.forEach(l => { sources[l.source||'unknown'] = (sources[l.source||'unknown']||0)+1; });
+  const total = leads.length || 1;
+  document.getElementById('source-chart').innerHTML = Object.entries(sources).map(([src,count])=>`
+    <div style="margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;font-size:0.83rem;margin-bottom:6px">
+        <span style="color:var(--text);text-transform:capitalize">${src.replace(/_/g,' ')}</span>
+        <span style="color:var(--muted)">${count} lead${count!==1?'s':''} (${Math.round(count/total*100)}%)</span>
+      </div>
+      <div class="progress"><div class="progress-bar" style="width:${Math.round(count/total*100)}%"></div></div>
+    </div>`).join('') || '<p style="color:var(--muted);font-size:0.85rem">No lead data yet</p>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content — HIM Digi Admin</title><meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+<div class="admin-layout">
+  <aside class="admin-sidebar" id="admin-sidebar">
+    <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
+    <nav class="sidebar-nav" id="sidebar-nav"></nav>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name"></div><div class="sidebar-user-role" id="sidebar-user-role"></div></div></div></div>
+  </aside>
+  <div class="admin-main">
+    <header class="admin-topbar">
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Content Management</div></div>
+      <div class="topbar-right"><div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div></div>
+    </header>
+    <main class="admin-content">
+      <div class="page-header-admin"><div><h1>Content Management</h1><p>Edit website content — changes save locally and show what to update in VS Code</p></div></div>
+
+      <div class="alert alert-warning"><i class="ri-alert-line"></i> <strong>How this works:</strong> Edit content below and click Save. The system shows you the exact text to update in your HTML files. Full CMS with live editing requires a backend (Supabase/Firebase — Phase 7).</div>
+
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('homepage',this)">Homepage</div>
+        <div class="tab" onclick="switchTab('services',this)">Services</div>
+        <div class="tab" onclick="switchTab('about',this)">About</div>
+      </div>
+
+      <div class="tab-panel active" id="tab-homepage">
+        <div class="card" style="margin-bottom:20px">
+          <div class="card-header"><span class="card-title">Hero Section</span></div>
+          <div class="card-body">
+            <div class="form-group"><label class="form-label">Hero Headline Line 1</label><input class="form-control" id="c-hero_line1" value="We Grow Your" /></div>
+            <div class="form-group"><label class="form-label">Hero Headline Line 2</label><input class="form-control" id="c-hero_line2" value="Business With" /></div>
+            <div class="form-group"><label class="form-label">Hero Orange Text</label><input class="form-control" id="c-hero_orange" value="Quality Content" /></div>
+            <div class="form-group"><label class="form-label">Hero Cyan Text</label><input class="form-control" id="c-hero_cyan" value="& Smart Ads" /></div>
+            <div class="form-group"><label class="form-label">Hero Subheading</label><textarea class="form-control" id="c-hero_sub">From storytelling to strategy — HIM Digi Solutions helps local businesses dominate digitally through Meta Ads, Google Ads, Social Media, and Content Creation.</textarea></div>
+            <button class="btn btn-primary" onclick="saveContent()"><i class="ri-save-line"></i> Save & Show Update Instructions</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-services">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Services Content</span></div>
+          <div class="card-body">
+            <p style="color:var(--muted);font-size:0.85rem;margin-bottom:20px">Edit service names and descriptions. Update the corresponding HTML in <code>pages/services.html</code>.</p>
+            <div id="services-fields"></div>
+            <button class="btn btn-primary" onclick="saveContent()"><i class="ri-save-line"></i> Save</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-about">
+        <div class="card">
+          <div class="card-header"><span class="card-title">About / Founder Bio</span></div>
+          <div class="card-body">
+            <div class="form-group"><label class="form-label">Founder Name</label><input class="form-control" value="Himanshu" /></div>
+            <div class="form-group"><label class="form-label">Title / Role</label><input class="form-control" value="Founder & Lead Strategist" /></div>
+            <div class="form-group"><label class="form-label">Short Bio (Story Block 1)</label><textarea class="form-control" rows="4">My journey began in filmmaking and digital content creation — a world where you learn to tell stories, understand people, and create things that actually make someone feel something.</textarea></div>
+            <button class="btn btn-primary" onclick="saveContent()"><i class="ri-save-line"></i> Save</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output -->
+      <div id="update-instructions" style="display:none;margin-top:20px">
+        <div class="alert alert-success"><i class="ri-checkbox-circle-line"></i> Content saved! Open VS Code and update the relevant HTML file with the text above.</div>
+      </div>
+    </main>
+  </div>
+</div>
+<script src="js/admin.js"></script>
+<script>
+const user = Auth.require();
+if (user) {
+  buildSidebar(user, 'content');
+
+  const services = [
+    { name:'Google Ads / PPC', desc:'Targeted search campaigns that put your business in front of customers who are actively searching for you.' },
+    { name:'Meta Ads', desc:'Facebook and Instagram campaigns crafted with audience psychology to drive real leads and sales.' },
+    { name:'Social Media Marketing', desc:'Build a loyal audience and a strong brand presence across Instagram, Facebook, and beyond.' },
+    { name:'Content Creation', desc:'Scroll-stopping videos, reels, and visuals rooted in storytelling — from a filmmaker-turned-marketer.' },
+  ];
+
+  document.getElementById('services-fields').innerHTML = services.map((s,i)=>`
+    <div style="padding:16px;background:var(--surface2);border-radius:var(--radius);margin-bottom:12px">
+      <div class="form-group"><label class="form-label">Service ${i+1} Name</label><input class="form-control" value="${s.name}" /></div>
+      <div class="form-group" style="margin-bottom:0"><label class="form-label">Description</label><textarea class="form-control" rows="2">${s.desc}</textarea></div>
+    </div>`).join('');
+
+  function switchTab(name, el) {
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-'+name).classList.add('active');
+  }
+
+  function saveContent() {
+    document.getElementById('update-instructions').style.display = 'block';
+    toast('Content saved! Update your HTML files in VS Code.');
+  }
+}
+</script>
+</body>
+</html>
