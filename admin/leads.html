@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leads — HIM Digi Admin</title>
-  <meta name="robots" content="noindex, nofollow" />
+  <title>Leads — HIM Digi Admin</title><meta name="robots" content="noindex,nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -14,51 +13,52 @@
   <aside class="admin-sidebar" id="admin-sidebar">
     <div class="sidebar-logo"><div class="sidebar-logo-text">HIM<span>.</span>Digi</div><div class="sidebar-logo-sub">Admin Panel</div></div>
     <nav class="sidebar-nav" id="sidebar-nav"></nav>
-    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name">Admin</div><div class="sidebar-user-role" id="sidebar-user-role">Administrator</div></div></div></div>
+    <div class="sidebar-footer"><div class="sidebar-user"><div class="sidebar-avatar" id="sidebar-avatar">H</div><div><div class="sidebar-user-name" id="sidebar-user-name"></div><div class="sidebar-user-role" id="sidebar-user-role"></div></div></div></div>
   </aside>
   <div class="admin-main">
     <header class="admin-topbar">
-      <div class="topbar-left">
-        <button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button>
-        <div class="topbar-title">Leads & Enquiries</div>
-      </div>
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Leads & Enquiries</div></div>
       <div class="topbar-right">
-        <a href="../index.html" target="_blank" class="topbar-btn"><i class="ri-external-link-line"></i></a>
+        <button class="topbar-btn" onclick="loadLeads()" title="Refresh"><i class="ri-refresh-line"></i></button>
         <div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div>
       </div>
     </header>
     <main class="admin-content">
       <div class="page-header-admin">
-        <div><h1>Leads & Enquiries</h1><p>Manage all form submissions and client enquiries</p></div>
+        <div><h1>Leads & Enquiries</h1><p id="leads-subtitle">Loading from Supabase...</p></div>
         <div class="header-actions">
           <button class="btn btn-outline" onclick="exportLeads()"><i class="ri-download-line"></i> Export CSV</button>
           <button class="btn btn-primary" onclick="openAddLead()"><i class="ri-add-line"></i> Add Lead</button>
         </div>
       </div>
 
-      <!-- Stats bar -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px" id="lead-stats"></div>
+      <!-- Supabase status -->
+      <div id="sb-warning" class="alert alert-warning" style="margin-bottom:16px;display:none">
+        <i class="ri-alert-line"></i> Supabase not configured yet. Showing local data only. Add your Supabase URL and key to <code>js/supabase.js</code>.
+      </div>
+
+      <!-- Stats -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px" id="lead-stats"></div>
 
       <!-- Filters -->
-      <div class="card" style="margin-bottom:20px">
+      <div class="card" style="margin-bottom:16px">
         <div class="card-body" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-          <div class="search-bar"><i class="ri-search-line"></i><input type="text" id="search-input" placeholder="Search by name, phone, email..." oninput="renderLeads()" /></div>
-          <select class="form-control" style="width:auto" id="status-filter" onchange="renderLeads()">
+          <div class="search-bar"><i class="ri-search-line"></i><input type="text" id="search-input" placeholder="Search name, phone, email..." oninput="filterLeads()" /></div>
+          <select class="form-control" style="width:auto" id="status-filter" onchange="filterLeads()">
             <option value="">All Status</option>
             <option value="new">New</option>
             <option value="contacted">Contacted</option>
             <option value="converted">Converted</option>
             <option value="closed">Closed</option>
           </select>
-          <select class="form-control" style="width:auto" id="service-filter" onchange="renderLeads()">
+          <select class="form-control" style="width:auto" id="service-filter" onchange="filterLeads()">
             <option value="">All Services</option>
             <option value="google-ads">Google Ads</option>
             <option value="meta-ads">Meta Ads</option>
             <option value="social-media">Social Media</option>
             <option value="content-creation">Content Creation</option>
-            <option value="all">All Services</option>
           </select>
-          <button class="btn btn-outline btn-sm" onclick="clearFilters()"><i class="ri-refresh-line"></i> Clear</button>
+          <button class="btn btn-outline btn-sm" onclick="clearFilters()"><i class="ri-refresh-line"></i></button>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
         <div class="table-wrap">
           <table>
             <thead><tr><th>Name & Contact</th><th>Business</th><th>Service</th><th>Date</th><th>Source</th><th>Status</th><th>Actions</th></tr></thead>
-            <tbody id="leads-tbody"></tbody>
+            <tbody id="leads-tbody"><tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted)"><i class="ri-loader-4-line" style="animation:spin 1s linear infinite"></i> Loading leads...</td></tr></tbody>
           </table>
         </div>
         <div class="card-footer" id="leads-footer"></div>
@@ -78,109 +78,135 @@
 
 <!-- Lead Detail Modal -->
 <div class="modal-overlay" id="lead-modal">
-  <div class="modal" style="max-width:620px">
-    <div class="modal-header">
-      <span class="modal-title" id="modal-title">Lead Details</span>
-      <button class="modal-close" onclick="closeModal('lead-modal')"><i class="ri-close-line"></i></button>
-    </div>
+  <div class="modal" style="max-width:580px">
+    <div class="modal-header"><span class="modal-title" id="modal-title">Lead Details</span><button class="modal-close" onclick="closeModal('lead-modal')"><i class="ri-close-line"></i></button></div>
     <div class="modal-body" id="modal-body"></div>
     <div class="modal-footer" id="modal-footer"></div>
   </div>
 </div>
 
 <!-- Add Lead Modal -->
-<div class="modal-overlay" id="add-lead-modal">
+<div class="modal-overlay" id="add-modal">
   <div class="modal">
-    <div class="modal-header">
-      <span class="modal-title">Add New Lead</span>
-      <button class="modal-close" onclick="closeModal('add-lead-modal')"><i class="ri-close-line"></i></button>
-    </div>
+    <div class="modal-header"><span class="modal-title">Add Manual Lead</span><button class="modal-close" onclick="closeModal('add-modal')"><i class="ri-close-line"></i></button></div>
     <div class="modal-body">
       <div class="form-row">
         <div class="form-group"><label class="form-label">Name *</label><input class="form-control" id="add-name" placeholder="Client name" /></div>
         <div class="form-group"><label class="form-label">Phone *</label><input class="form-control" id="add-phone" placeholder="+91 XXXXX XXXXX" /></div>
       </div>
-      <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="add-email" type="email" placeholder="client@email.com" /></div>
-      <div class="form-group"><label class="form-label">Business</label><input class="form-control" id="add-business" placeholder="Business name & type" /></div>
+      <div class="form-group"><label class="form-label">Email</label><input class="form-control" id="add-email" type="email" /></div>
+      <div class="form-group"><label class="form-label">Business</label><input class="form-control" id="add-business" /></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Service Interest</label>
+        <div class="form-group"><label class="form-label">Service</label>
           <select class="form-control" id="add-service">
             <option value="google-ads">Google Ads</option><option value="meta-ads">Meta Ads</option>
-            <option value="social-media">Social Media</option><option value="content-creation">Content Creation</option><option value="all">All Services</option>
+            <option value="social-media">Social Media</option><option value="content-creation">Content Creation</option>
           </select>
         </div>
         <div class="form-group"><label class="form-label">Source</label>
           <select class="form-control" id="add-source">
-            <option value="manual">Manual Entry</option><option value="contact_form">Contact Form</option>
-            <option value="whatsapp">WhatsApp</option><option value="instagram">Instagram</option><option value="referral">Referral</option>
+            <option value="manual">Manual</option><option value="whatsapp">WhatsApp</option>
+            <option value="instagram">Instagram</option><option value="referral">Referral</option>
           </select>
         </div>
       </div>
-      <div class="form-group"><label class="form-label">Message / Notes</label><textarea class="form-control" id="add-message" placeholder="What did they say?"></textarea></div>
+      <div class="form-group"><label class="form-label">Notes</label><textarea class="form-control" id="add-message"></textarea></div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal('add-lead-modal')">Cancel</button>
+      <button class="btn btn-outline" onclick="closeModal('add-modal')">Cancel</button>
       <button class="btn btn-primary" onclick="saveLead()"><i class="ri-save-line"></i> Save Lead</button>
     </div>
   </div>
 </div>
 
-<script src="js/admin.js"></script>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<script src="../js/supabase.js"></script>
+<script src="../js/admin.js"></script>
 <script>
 const user = Auth.require();
-if (user) {
+if(user) {
   buildSidebar(user, 'leads');
 
-  function getFiltered() {
-    let leads = DB.get('leads') || [];
-    const q = document.getElementById('search-input').value.toLowerCase();
-    const status = document.getElementById('status-filter').value;
-    const service = document.getElementById('service-filter').value;
-    if (q) leads = leads.filter(l => (l.name+l.phone+l.email+l.business).toLowerCase().includes(q));
-    if (status) leads = leads.filter(l => l.status === status);
-    if (service) leads = leads.filter(l => l.service === service);
-    return leads;
+  let ALL_LEADS = [];
+
+  // Check Supabase config
+  if (!supabaseConfigured()) {
+    document.getElementById('sb-warning').style.display = 'flex';
+  }
+
+  async function loadLeads() {
+    document.getElementById('leads-subtitle').textContent = 'Loading...';
+    try {
+      let leads = [];
+      if (supabaseConfigured()) {
+        leads = await SB.leads.getAll();
+      } else {
+        // Fallback to localStorage
+        leads = DB.get('leads') || [];
+      }
+      ALL_LEADS = leads || [];
+      document.getElementById('leads-subtitle').textContent = ALL_LEADS.length + ' total leads';
+      renderStats();
+      filterLeads();
+    } catch(err) {
+      console.error('Load leads error:', err);
+      ALL_LEADS = DB.get('leads') || [];
+      document.getElementById('sb-warning').style.display = 'flex';
+      renderStats();
+      filterLeads();
+    }
   }
 
   function renderStats() {
-    const all = DB.get('leads') || [];
-    const counts = { new:0, contacted:0, converted:0, closed:0 };
-    all.forEach(l => counts[l.status] = (counts[l.status]||0)+1);
+    const counts = {new:0,contacted:0,converted:0,closed:0};
+    ALL_LEADS.forEach(l => { if(counts[l.status]!==undefined) counts[l.status]++; });
     document.getElementById('lead-stats').innerHTML = [
       {label:'New',val:counts.new,color:'blue',icon:'ri-mail-unread-line'},
       {label:'Contacted',val:counts.contacted,color:'yellow',icon:'ri-phone-line'},
       {label:'Converted',val:counts.converted,color:'green',icon:'ri-checkbox-circle-line'},
       {label:'Closed',val:counts.closed,color:'orange',icon:'ri-close-circle-line'},
-    ].map(s=>`<div class="stat-card ${s.color}" style="padding:16px 18px">
-      <div style="display:flex;align-items:center;justify-content:space-between">
+    ].map(s=>`<div class="stat-card ${s.color}" style="padding:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
         <div class="stat-icon ${s.color}" style="margin:0"><i class="${s.icon}"></i></div>
         <div class="stat-val">${s.val}</div>
       </div>
-      <div class="stat-label" style="margin-top:8px">${s.label}</div>
+      <div class="stat-label">${s.label}</div>
     </div>`).join('');
   }
 
-  function renderLeads() {
+  function getFiltered() {
+    const q = document.getElementById('search-input').value.toLowerCase();
+    const status = document.getElementById('status-filter').value;
+    const service = document.getElementById('service-filter').value;
+    return ALL_LEADS.filter(l => {
+      const match = (l.name+l.phone+(l.email||'')+(l.business||'')).toLowerCase().includes(q);
+      const sMatch = !status || l.status === status;
+      const svMatch = !service || l.service === service;
+      return match && sMatch && svMatch;
+    });
+  }
+
+  function filterLeads() {
     const leads = getFiltered();
     const tbody = document.getElementById('leads-tbody');
     if (!leads.length) {
-      tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><i class="ri-user-received-line"></i><h4>No leads found</h4><p>Try adjusting your filters</p></div></td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7"><div class="empty-state"><i class="ri-user-received-line"></i><h4>No leads found</h4></div></td></tr>';
       document.getElementById('leads-footer').textContent = '0 leads';
       return;
     }
-    tbody.innerHTML = leads.map(l=>`
+    tbody.innerHTML = leads.map(l => `
       <tr>
         <td>
           <strong style="color:var(--white)">${l.name}</strong><br>
-          <span style="font-size:0.75rem;color:var(--cyan)">${l.phone}</span><br>
-          <span style="font-size:0.73rem;color:var(--muted)">${l.email||''}</span>
+          <a href="tel:${l.phone}" style="font-size:0.75rem;color:var(--cyan)">${l.phone}</a><br>
+          <span style="font-size:0.72rem;color:var(--muted)">${l.email||''}</span>
         </td>
-        <td style="font-size:0.83rem">${l.business||'—'}</td>
-        <td><span style="font-size:0.8rem;color:var(--text)">${(l.service||'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</span></td>
-        <td style="font-size:0.8rem;color:var(--muted)">${l.date}</td>
-        <td><span style="font-size:0.78rem;color:var(--muted);text-transform:capitalize">${(l.source||'').replace(/_/g,' ')}</span></td>
+        <td style="font-size:0.82rem">${l.business||'—'}</td>
+        <td style="font-size:0.8rem">${(l.service||'').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase())}</td>
+        <td style="font-size:0.78rem;color:var(--muted)">${new Date(l.created_at||l.date||Date.now()).toLocaleDateString('en-IN')}</td>
+        <td style="font-size:0.78rem;color:var(--muted);text-transform:capitalize">${(l.source||'').replace(/_/g,' ')}</td>
         <td>
-          <select class="form-control" style="width:auto;padding:5px 10px;font-size:0.78rem" onchange="updateStatus(${l.id},this.value)">
+          <select class="form-control" style="width:auto;padding:5px 8px;font-size:0.78rem" onchange="updateStatus('${l.id}',this.value)">
             <option value="new" ${l.status==='new'?'selected':''}>New</option>
             <option value="contacted" ${l.status==='contacted'?'selected':''}>Contacted</option>
             <option value="converted" ${l.status==='converted'?'selected':''}>Converted</option>
@@ -188,72 +214,91 @@ if (user) {
           </select>
         </td>
         <td>
-          <div style="display:flex;gap:6px">
-            <button class="btn btn-sm btn-outline btn-icon" onclick="viewLead(${l.id})" title="View"><i class="ri-eye-line"></i></button>
-            <a href="https://wa.me/${l.phone.replace(/\D/g,'')}?text=Hi%20${encodeURIComponent(l.name)}!%20I'm%20Himanshu%20from%20HIM%20Digi%20Solutions.%20I%20received%20your%20enquiry%20and%20wanted%20to%20connect." 
+          <div style="display:flex;gap:5px">
+            <button class="btn btn-sm btn-outline btn-icon" onclick="viewLead('${l.id}')" title="View"><i class="ri-eye-line"></i></button>
+            <a href="https://wa.me/${(l.phone||'').replace(/\D/g,'')}?text=Hi%20${encodeURIComponent(l.name||'')}!%20This%20is%20Himanshu%20from%20HIM%20Digi%20Solutions."
                class="btn btn-sm btn-success btn-icon" target="_blank" title="WhatsApp"><i class="ri-whatsapp-line"></i></a>
-            <button class="btn btn-sm btn-danger btn-icon" onclick="deleteLead(${l.id})" title="Delete"><i class="ri-delete-bin-line"></i></button>
+            <button class="btn btn-sm btn-danger btn-icon" onclick="deleteLead('${l.id}')" title="Delete"><i class="ri-delete-bin-line"></i></button>
           </div>
         </td>
       </tr>`).join('');
-    document.getElementById('leads-footer').innerHTML = `<span style="font-size:0.82rem;color:var(--muted)">Showing ${leads.length} lead${leads.length!==1?'s':''}</span>`;
+    document.getElementById('leads-footer').innerHTML = `<span style="font-size:0.82rem;color:var(--muted)">${leads.length} lead${leads.length!==1?'s':''}</span>`;
   }
 
-  function updateStatus(id, status) {
-    DB.update('leads', id, { status });
-    DB.push('activity', { type:'update', icon:'ri-edit-line', color:'orange', text:`Lead status updated to ${status}`, time:'Just now' });
-    renderStats(); renderLeads();
-    toast(`Status updated to ${status}`);
+  async function updateStatus(id, status) {
+    try {
+      if (supabaseConfigured()) {
+        await SB.leads.updateStatus(id, status);
+      } else {
+        DB.update('leads', id, { status });
+      }
+      const lead = ALL_LEADS.find(l => l.id == id);
+      if (lead) lead.status = status;
+      renderStats();
+      toast('Status updated to ' + status);
+    } catch(err) { toast('Update failed: ' + err.message, 'error'); }
   }
 
   function viewLead(id) {
-    const lead = (DB.get('leads')||[]).find(l=>l.id==id);
-    if (!lead) return;
-    document.getElementById('modal-title').textContent = lead.name;
+    const l = ALL_LEADS.find(l => l.id == id);
+    if (!l) return;
+    document.getElementById('modal-title').textContent = l.name;
     document.getElementById('modal-body').innerHTML = `
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-        ${[['Name',lead.name],['Phone',`<a href="tel:${lead.phone}" style="color:var(--cyan)">${lead.phone}</a>`],
-          ['Email',lead.email||'—'],['Business',lead.business||'—'],
-          ['Service',lead.service],['Source',lead.source],['Date',lead.date],
-          ['Status',`<span class="badge ${lead.status}">${lead.status}</span>`]
-        ].map(([k,v])=>`<div><div style="font-size:0.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px">${k}</div><div style="font-size:0.9rem;color:var(--white)">${v}</div></div>`).join('')}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        ${[['Name',l.name],['Phone',`<a href="tel:${l.phone}" style="color:var(--cyan)">${l.phone}</a>`],
+          ['Email',l.email||'—'],['Business',l.business||'—'],
+          ['Service',(l.service||'').replace(/-/g,' ')],['Source',(l.source||'').replace(/_/g,' ')],
+          ['Date',new Date(l.created_at||l.date||Date.now()).toLocaleDateString('en-IN')],
+          ['Status',`<span class="badge ${l.status}">${l.status}</span>`]
+        ].map(([k,v])=>`<div><div style="font-size:0.7rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px">${k}</div><div style="font-size:0.88rem;color:var(--white)">${v}</div></div>`).join('')}
       </div>
-      ${lead.message?`<div style="margin-top:16px;padding:14px;background:var(--surface2);border-radius:8px;font-size:0.88rem;color:var(--text)">${lead.message}</div>`:''}`;
+      ${l.message?`<div style="margin-top:14px;padding:12px;background:var(--surface2);border-radius:8px;font-size:0.85rem;color:var(--text)">${l.message}</div>`:''}`;
     document.getElementById('modal-footer').innerHTML = `
-      <a href="https://wa.me/${lead.phone.replace(/\D/g,'')}?text=Hi%20${encodeURIComponent(lead.name)}!" 
-         class="btn btn-success" target="_blank"><i class="ri-whatsapp-line"></i> WhatsApp</a>
-      <a href="mailto:${lead.email}" class="btn btn-outline"><i class="ri-mail-line"></i> Email</a>
+      <a href="https://wa.me/${(l.phone||'').replace(/\D/g,'')}?text=Hi%20${encodeURIComponent(l.name||'')}!" class="btn btn-success" target="_blank"><i class="ri-whatsapp-line"></i> WhatsApp</a>
+      ${l.email?`<a href="mailto:${l.email}" class="btn btn-outline"><i class="ri-mail-line"></i> Email</a>`:''}
       <button class="btn btn-outline" onclick="closeModal('lead-modal')">Close</button>`;
     document.getElementById('lead-modal').classList.add('open');
   }
 
-  function deleteLead(id) {
-    confirm_delete('Delete this lead permanently?', () => {
-      DB.delete('leads', id);
-      renderStats(); renderLeads();
-      toast('Lead deleted', 'error');
+  async function deleteLead(id) {
+    confirm_delete('Delete this lead permanently?', async () => {
+      try {
+        if (supabaseConfigured()) await SB.leads.delete(id);
+        ALL_LEADS = ALL_LEADS.filter(l => l.id != id);
+        renderStats(); filterLeads();
+        toast('Lead deleted', 'error');
+      } catch(err) { toast('Delete failed', 'error'); }
     });
   }
 
-  function openAddLead() { document.getElementById('add-lead-modal').classList.add('open'); }
+  function openAddLead() { document.getElementById('add-modal').classList.add('open'); }
 
-  function saveLead() {
+  async function saveLead() {
     const name = document.getElementById('add-name').value.trim();
     const phone = document.getElementById('add-phone').value.trim();
-    if (!name || !phone) { toast('Name and phone are required', 'error'); return; }
-    DB.push('leads', {
+    if (!name||!phone) { toast('Name and phone required','error'); return; }
+    const lead = {
       name, phone,
       email: document.getElementById('add-email').value,
       business: document.getElementById('add-business').value,
       service: document.getElementById('add-service').value,
       source: document.getElementById('add-source').value,
       message: document.getElementById('add-message').value,
-      status: 'new', date: new Date().toISOString().split('T')[0]
-    });
-    DB.push('activity', { type:'lead', icon:'ri-user-add-line', color:'blue', text:`New lead added: ${name}`, time:'Just now' });
-    closeModal('add-lead-modal');
-    renderStats(); renderLeads();
-    toast('Lead added successfully!');
+      status: 'new'
+    };
+    try {
+      if (supabaseConfigured()) {
+        const saved = await SB.leads.insert(lead);
+        ALL_LEADS.unshift(saved[0]);
+      } else {
+        lead.id = Date.now(); lead.created_at = new Date().toISOString();
+        DB.push('leads', lead);
+        ALL_LEADS.unshift(lead);
+      }
+      closeModal('add-modal');
+      renderStats(); filterLeads();
+      toast('Lead added!');
+    } catch(err) { toast('Save failed: ' + err.message, 'error'); }
   }
 
   function exportLeads() { exportCSV(getFiltered(), 'him-digi-leads.csv'); }
@@ -261,13 +306,13 @@ if (user) {
     document.getElementById('search-input').value='';
     document.getElementById('status-filter').value='';
     document.getElementById('service-filter').value='';
-    renderLeads();
+    filterLeads();
   }
 
   function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-  document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if(e.target===m) m.classList.remove('open'); }));
+  document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
 
-  renderStats(); renderLeads();
+  loadLeads();
 }
 </script>
 </body>

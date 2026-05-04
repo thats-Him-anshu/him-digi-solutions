@@ -2,11 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog — HIM Digi Admin</title><meta name="robots" content="noindex, nofollow" />
+  <title>Blog Manager — HIM Digi Admin</title><meta name="robots" content="noindex,nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/admin.css" />
+  <style>
+    .editor-layout{display:grid;grid-template-columns:1fr 340px;gap:18px}
+    .editor-area{background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:14px;min-height:320px;font-family:var(--font-b);font-size:0.92rem;color:var(--text);line-height:1.7;resize:vertical;width:100%;outline:none;transition:border-color var(--trans)}
+    .editor-area:focus{border-color:var(--orange)}
+    .toolbar{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;padding:8px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)}
+    .tbtn{padding:5px 10px;background:var(--surface3);border:1px solid var(--border);border-radius:5px;color:var(--text);font-size:0.76rem;font-weight:600;cursor:pointer;transition:var(--trans)}
+    .tbtn:hover{background:var(--orange);border-color:var(--orange);color:white}
+    .preview-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:16px;min-height:160px;font-size:0.87rem;color:var(--text);line-height:1.72;max-height:400px;overflow-y:auto}
+    .preview-box h1{font-size:1.2rem;color:var(--white);margin-bottom:8px;font-family:var(--font-d)}
+    .preview-box h2{font-size:1rem;color:var(--white);margin:16px 0 6px;font-family:var(--font-d)}
+    .preview-box h3{font-size:0.9rem;color:var(--white);margin:12px 0 5px;font-family:var(--font-d)}
+    .preview-box p{margin-bottom:8px;color:var(--muted)}
+    .preview-box ul,.preview-box ol{padding-left:16px;margin-bottom:8px}
+    .preview-box li{color:var(--muted);margin-bottom:3px}
+    .preview-box strong{color:var(--white)}
+    .preview-box blockquote{border-left:3px solid var(--orange);padding:8px 12px;background:var(--surface3);border-radius:0 6px 6px 0;margin:12px 0}
+    .post-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;margin-bottom:8px;transition:var(--trans)}
+    .post-row:hover{border-color:rgba(255,107,43,0.3)}
+    @media(max-width:1100px){.editor-layout{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
 <div class="admin-layout">
@@ -17,76 +37,383 @@
   </aside>
   <div class="admin-main">
     <header class="admin-topbar">
-      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Blog Posts</div></div>
-      <div class="topbar-right"><div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div></div>
+      <div class="topbar-left"><button class="hamburger-btn" id="hamburger-btn"><i class="ri-menu-line"></i></button><div class="topbar-title">Blog Manager</div></div>
+      <div class="topbar-right">
+        <a href="../pages/blog/index.html" target="_blank" class="topbar-btn"><i class="ri-external-link-line"></i></a>
+        <div class="topbar-btn" onclick="Auth.logout()"><i class="ri-logout-box-line"></i></div>
+      </div>
     </header>
     <main class="admin-content">
-      <div class="page-header-admin">
-        <div><h1>Blog Posts</h1><p>Manage your published articles</p></div>
-        <a href="../pages/blog/index.html" target="_blank" class="btn btn-outline"><i class="ri-external-link-line"></i> View Blog</a>
+
+      <!-- Supabase warning -->
+      <div id="sb-warning" class="alert alert-warning" style="margin-bottom:16px;display:none">
+        <i class="ri-alert-line"></i> Supabase not configured. Add your URL and key to <code>js/supabase.js</code> to enable live publishing.
       </div>
 
-      <div class="alert alert-info" style="margin-bottom:20px"><i class="ri-information-line"></i> To add new blog posts, create a new HTML file in <code>pages/blog/</code> following the existing post structure, then add it to <code>pages/blog/index.html</code>.</div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
-            <tbody>
-              <tr>
-                <td><strong>How to Run Google Ads for Local Business in India (2026)</strong><br><span style="font-size:0.73rem;color:var(--muted)">google-ads-local-business-india.html</span></td>
-                <td><span class="badge new">Google Ads</span></td>
-                <td style="font-size:0.82rem;color:var(--muted)">Apr 2026</td>
-                <td><span class="badge converted"><span class="badge-dot"></span>Published</span></td>
-                <td><div style="display:flex;gap:6px">
-                  <a href="../pages/blog/google-ads-local-business-india.html" target="_blank" class="btn btn-sm btn-outline btn-icon"><i class="ri-eye-line"></i></a>
-                </div></td>
-              </tr>
-              <tr>
-                <td><strong>How Much Do Meta Ads Cost in India in 2026?</strong><br><span style="font-size:0.73rem;color:var(--muted)">meta-ads-cost-india-2026.html</span></td>
-                <td><span class="badge contacted">Meta Ads</span></td>
-                <td style="font-size:0.82rem;color:var(--muted)">Apr 2026</td>
-                <td><span class="badge converted"><span class="badge-dot"></span>Published</span></td>
-                <td><div style="display:flex;gap:6px">
-                  <a href="../pages/blog/meta-ads-cost-india-2026.html" target="_blank" class="btn btn-sm btn-outline btn-icon"><i class="ri-eye-line"></i></a>
-                </div></td>
-              </tr>
-              <tr>
-                <td><strong>Social Media Marketing for Local Businesses in Hosur & Tamil Nadu</strong><br><span style="font-size:0.73rem;color:var(--muted)">social-media-marketing-hosur.html</span></td>
-                <td><span class="badge staff">Social Media</span></td>
-                <td style="font-size:0.82rem;color:var(--muted)">Apr 2026</td>
-                <td><span class="badge converted"><span class="badge-dot"></span>Published</span></td>
-                <td><div style="display:flex;gap:6px">
-                  <a href="../pages/blog/social-media-marketing-hosur.html" target="_blank" class="btn btn-sm btn-outline btn-icon"><i class="ri-eye-line"></i></a>
-                </div></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="card-footer">
-          <div style="font-size:0.82rem;color:var(--muted)">3 posts published</div>
-        </div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('list',this)"><i class="ri-article-line"></i> All Posts</div>
+        <div class="tab" onclick="switchTab('write',this)"><i class="ri-add-line"></i> Write New Post</div>
       </div>
 
-      <div class="card" style="margin-top:20px">
-        <div class="card-header"><span class="card-title">New Blog Post Template</span></div>
-        <div class="card-body">
-          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:16px">Copy the template below as a starting point for your next blog post:</p>
-          <div style="background:var(--surface2);border-radius:8px;padding:16px;font-family:monospace;font-size:0.78rem;color:var(--cyan);line-height:1.6">
-            File: pages/blog/your-post-slug.html<br>
-            Copy from: google-ads-local-business-india.html<br>
-            Update: title, meta description, h1, article content, schema dates<br>
-            Add to: pages/blog/index.html as a new blog-card
+      <!-- ALL POSTS -->
+      <div id="tab-list">
+        <div class="page-header-admin">
+          <div><h1>Blog Posts</h1><p id="post-count">Loading...</p></div>
+          <button class="btn btn-primary" onclick="switchTab('write',document.querySelectorAll('.tab')[1])"><i class="ri-add-line"></i> Write New Post</button>
+        </div>
+        <div id="posts-list"><div style="text-align:center;padding:40px;color:var(--muted)"><i class="ri-loader-4-line" style="animation:spin 1s linear infinite;font-size:1.5rem"></i></div></div>
+      </div>
+
+      <!-- WRITE POST -->
+      <div id="tab-write" style="display:none">
+        <div class="page-header-admin">
+          <div><h1 id="write-title">Write New Post</h1><p>Publish directly to your live website — no git push needed</p></div>
+          <div class="header-actions">
+            <button class="btn btn-outline" onclick="previewPost()"><i class="ri-eye-line"></i> Preview</button>
+            <button class="btn btn-primary" id="publish-btn" onclick="publishPost()"><i class="ri-send-plane-line"></i> Publish Now</button>
+          </div>
+        </div>
+
+        <div class="editor-layout">
+          <div>
+            <!-- Details -->
+            <div class="card" style="margin-bottom:14px">
+              <div class="card-header"><span class="card-title">Post Details</span></div>
+              <div class="card-body">
+                <div class="form-group"><label class="form-label">Title *</label><input class="form-control" id="p-title" placeholder="e.g. How to Get More Customers for Your Restaurant in Hosur" oninput="autoSlug()" /></div>
+                <div class="form-row">
+                  <div class="form-group"><label class="form-label">URL Slug *</label><input class="form-control" id="p-slug" placeholder="how-to-get-customers-hosur" /><div class="form-hint">post.html?slug=<span id="slug-prev" style="color:var(--cyan)">your-slug</span></div></div>
+                  <div class="form-group"><label class="form-label">Category</label>
+                    <select class="form-control" id="p-cat">
+                      <option>Digital Marketing</option><option>Google Ads</option><option>Meta Ads</option>
+                      <option>Social Media</option><option>Content Creation</option><option>SEO</option><option>Business Tips</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group"><label class="form-label">Cover Image URL</label><input class="form-control" id="p-img" placeholder="https://images.unsplash.com/..." /><div class="form-hint">Get free images from unsplash.com — right click image → copy image address</div></div>
+                  <div class="form-group"><label class="form-label">Read Time</label><input class="form-control" id="p-readtime" value="5 min read" /></div>
+                </div>
+              </div>
+            </div>
+            <!-- SEO -->
+            <div class="card" style="margin-bottom:14px">
+              <div class="card-header"><span class="card-title"><i class="ri-search-line" style="color:var(--orange)"></i> SEO</span></div>
+              <div class="card-body">
+                <div class="form-group"><label class="form-label">Meta Description <span id="dc" style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(0/160)</span></label><textarea class="form-control" id="p-desc" rows="2" placeholder="120-160 characters shown in Google search results..." oninput="updDc()"></textarea></div>
+                <div class="form-group" style="margin-bottom:0"><label class="form-label">Focus Keyword</label><input class="form-control" id="p-kw" placeholder="e.g. digital marketing Hosur" /></div>
+              </div>
+            </div>
+            <!-- Content -->
+            <div class="card">
+              <div class="card-header"><span class="card-title">Article Content</span><span style="font-size:0.75rem;color:var(--muted)" id="wc">0 words</span></div>
+              <div class="card-body" style="padding-bottom:8px">
+                <div class="toolbar">
+                  <button class="tbtn" onclick="ins('## ','')">H2</button>
+                  <button class="tbtn" onclick="ins('### ','')">H3</button>
+                  <button class="tbtn" onclick="ins('**','**')"><b>B</b></button>
+                  <button class="tbtn" onclick="ins('*','*')"><i>I</i></button>
+                  <button class="tbtn" onclick="ins('\n- ','')">• List</button>
+                  <button class="tbtn" onclick="ins('\n1. ','')">1. List</button>
+                  <button class="tbtn" onclick="ins('\n> ','')">Quote</button>
+                  <button class="tbtn" onclick="ins('\n---\n','')">Line</button>
+                  <button class="tbtn" onclick="insLink()">Link</button>
+                  <button class="tbtn" onclick="if(confirm('Clear content?')){document.getElementById('p-body').value='';updWc()}" style="margin-left:auto;color:var(--red)">Clear</button>
+                </div>
+                <textarea class="editor-area" id="p-body" placeholder="Write your article here using Markdown:
+
+## Section Heading
+Your paragraph text here...
+
+- Bullet point 1
+- Bullet point 2
+
+> Key quote or insight here
+
+**Bold text** and *italic text* work too." oninput="updWc()"></textarea>
+                <div style="font-size:0.72rem;color:var(--muted);padding:5px 0">## heading | **bold** | *italic* | - list | > quote</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div>
+            <!-- Preview -->
+            <div class="card" style="margin-bottom:14px">
+              <div class="card-header"><span class="card-title">Preview</span><button class="btn btn-sm btn-outline" onclick="previewPost()"><i class="ri-refresh-line"></i></button></div>
+              <div class="card-body" style="padding:12px"><div class="preview-box" id="preview-box"><p style="color:var(--muted);font-style:italic;font-size:0.8rem">Start writing to preview...</p></div></div>
+            </div>
+            <!-- Checklist + Publish -->
+            <div class="card">
+              <div class="card-header"><span class="card-title">Ready to Publish?</span></div>
+              <div class="card-body">
+                <div id="checklist" style="display:flex;flex-direction:column;gap:7px;font-size:0.82rem;margin-bottom:16px"></div>
+                <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+                  <label class="toggle"><input type="checkbox" id="p-published" checked><span class="toggle-slider"></span></label>
+                  <span style="font-size:0.83rem;color:var(--muted)">Publish immediately</span>
+                </div>
+                <button class="btn btn-primary" style="width:100%;justify-content:center" id="pub-btn-sidebar" onclick="publishPost()">
+                  <i class="ri-send-plane-line"></i> Publish Now
+                </button>
+                <div id="publish-result" style="margin-top:10px;display:none"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
     </main>
   </div>
 </div>
-<script src="js/admin.js"></script>
+
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+<script src="../js/supabase.js"></script>
+<script src="../js/admin.js"></script>
 <script>
 const user = Auth.require();
-if (user) buildSidebar(user, 'blog');
+if(user) {
+  buildSidebar(user, 'blog');
+  if (!supabaseConfigured()) document.getElementById('sb-warning').style.display = 'flex';
+
+  let editingId = null;
+
+  // ── Load posts ──
+  async function loadPosts() {
+    try {
+      let posts = [];
+      if (supabaseConfigured()) {
+        posts = await SB.blog.getAll();
+      } else {
+        posts = DB.get('blog_posts') || [];
+      }
+      document.getElementById('post-count').textContent = (posts||[]).length + ' posts total';
+      const container = document.getElementById('posts-list');
+      if (!posts || !posts.length) {
+        container.innerHTML = '<div class="empty-state"><i class="ri-article-line"></i><h4>No posts yet</h4><p>Write your first post!</p></div>';
+        return;
+      }
+      container.innerHTML = posts.map(p=>`
+        <div class="post-row">
+          <div>
+            <div style="font-family:var(--font-d);font-size:0.92rem;font-weight:600;color:var(--white);margin-bottom:3px">${p.title}</div>
+            <span class="badge ${p.published?'converted':'closed'}" style="margin-right:8px">${p.published?'Published':'Draft'}</span>
+            <span class="badge new" style="margin-right:8px">${p.category||'Blog'}</span>
+            <span style="font-size:0.73rem;color:var(--muted)">${new Date(p.created_at).toLocaleDateString('en-IN')}</span>
+          </div>
+          <div style="display:flex;gap:6px">
+            <a href="../pages/blog/post.html?slug=${p.slug}" target="_blank" class="btn btn-sm btn-outline btn-icon" title="View Live"><i class="ri-eye-line"></i></a>
+            <button class="btn btn-sm btn-outline btn-icon" onclick="editPost('${p.id}')" title="Edit"><i class="ri-edit-line"></i></button>
+            <button class="btn btn-sm btn-danger btn-icon" onclick="deletePost('${p.id}')" title="Delete"><i class="ri-delete-bin-line"></i></button>
+          </div>
+        </div>`).join('');
+    } catch(err) {
+      document.getElementById('posts-list').innerHTML = `<div class="alert alert-error"><i class="ri-error-warning-line"></i> Failed to load posts: ${err.message}</div>`;
+    }
+  }
+
+  async function editPost(id) {
+    try {
+      let post;
+      if (supabaseConfigured()) {
+        const posts = await SB.blog.getAll();
+        post = posts.find(p=>p.id==id);
+      } else {
+        post = (DB.get('blog_posts')||[]).find(p=>p.id==id);
+      }
+      if (!post) return;
+      editingId = id;
+      document.getElementById('p-title').value = post.title||'';
+      document.getElementById('p-slug').value = post.slug||'';
+      document.getElementById('p-cat').value = post.category||'Digital Marketing';
+      document.getElementById('p-img').value = post.cover_image||'';
+      document.getElementById('p-readtime').value = post.read_time||'5 min read';
+      document.getElementById('p-desc').value = post.meta_desc||'';
+      document.getElementById('p-kw').value = post.keyword||'';
+      document.getElementById('p-body').value = post.content||'';
+      document.getElementById('p-published').checked = post.published !== false;
+      document.getElementById('slug-prev').textContent = post.slug||'';
+      document.getElementById('write-title').textContent = 'Edit Post';
+      document.getElementById('publish-btn').innerHTML = '<i class="ri-save-line"></i> Update Post';
+      document.getElementById('pub-btn-sidebar').innerHTML = '<i class="ri-save-line"></i> Update Post';
+      updWc(); updDc(); updChecklist();
+      switchTab('write', document.querySelectorAll('.tab')[1]);
+    } catch(err) { toast('Failed to load post','error'); }
+  }
+
+  async function deletePost(id) {
+    confirm_delete('Delete this post permanently?', async () => {
+      try {
+        if (supabaseConfigured()) await SB.blog.delete(id);
+        else {
+          const p = DB.get('blog_posts')||[];
+          DB.set('blog_posts', p.filter(x=>x.id!=id));
+        }
+        toast('Post deleted');
+        loadPosts();
+      } catch(err) { toast('Delete failed','error'); }
+    });
+  }
+
+  // ── Tab switch ──
+  function switchTab(name, el) {
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('tab-list').style.display = name==='list'?'block':'none';
+    document.getElementById('tab-write').style.display = name==='write'?'block':'none';
+    if (name==='list') { editingId=null; resetForm(); loadPosts(); }
+  }
+
+  function resetForm() {
+    ['p-title','p-slug','p-img','p-desc','p-kw','p-body'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('p-readtime').value = '5 min read';
+    document.getElementById('p-published').checked = true;
+    document.getElementById('write-title').textContent = 'Write New Post';
+    document.getElementById('publish-btn').innerHTML = '<i class="ri-send-plane-line"></i> Publish Now';
+    document.getElementById('pub-btn-sidebar').innerHTML = '<i class="ri-send-plane-line"></i> Publish Now';
+    document.getElementById('publish-result').style.display = 'none';
+    document.getElementById('slug-prev').textContent = 'your-slug';
+    updWc(); updChecklist();
+  }
+
+  // ── Auto slug ──
+  function autoSlug() {
+    if (editingId) return; // don't override slug when editing
+    const slug = document.getElementById('p-title').value.toLowerCase()
+      .replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').trim();
+    document.getElementById('p-slug').value = slug;
+    document.getElementById('slug-prev').textContent = slug||'your-slug';
+    updChecklist();
+  }
+
+  function updWc() {
+    const w = document.getElementById('p-body').value.trim().split(/\s+/).filter(Boolean).length;
+    document.getElementById('wc').textContent = w + ' words';
+    updChecklist();
+  }
+
+  function updDc() {
+    const l = document.getElementById('p-desc').value.length;
+    const el = document.getElementById('dc');
+    el.textContent=`(${l}/160)`;
+    el.style.color = l>160?'var(--red)':l>=120?'var(--green)':'var(--muted)';
+    updChecklist();
+  }
+
+  function ins(b,a) {
+    const ta=document.getElementById('p-body');
+    const s=ta.selectionStart,e=ta.selectionEnd,sel=ta.value.substring(s,e);
+    ta.value=ta.value.substring(0,s)+b+sel+a+ta.value.substring(e);
+    ta.focus();ta.selectionStart=ta.selectionEnd=s+b.length+sel.length+a.length;
+    ta.dispatchEvent(new Event('input'));
+  }
+  function insLink(){const u=prompt('URL:');const t=prompt('Link text:')||u;if(u)ins(`[${t}](`,')');}
+
+  function md(text) {
+    if(!text) return '';
+    return text
+      .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+      .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,'<em>$1</em>')
+      .replace(/^> (.+)$/gm,'<blockquote>$1</blockquote>')
+      .replace(/^---$/gm,'<hr>')
+      .replace(/^\d+\. (.+)$/gm,'<li>$1</li>')
+      .replace(/^- (.+)$/gm,'<li>$1</li>')
+      .replace(/(<li>.*<\/li>\n?)+/g,m=>`<ul>${m}</ul>`)
+      .replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2" style="color:var(--cyan)">$1</a>')
+      .replace(/^(?!<[hulpobh])(.+)$/gm,'<p>$1</p>')
+      .replace(/<p><\/p>/g,'');
+  }
+
+  function previewPost() {
+    const title = document.getElementById('p-title').value||'Your Post Title';
+    const body = document.getElementById('p-body').value;
+    document.getElementById('preview-box').innerHTML = `<h1>${title}</h1>`+(body?md(body):'<p style="color:var(--muted);font-style:italic">Start writing...</p>');
+    updChecklist();
+  }
+
+  function updChecklist() {
+    const checks = [
+      {label:'Title',ok:!!document.getElementById('p-title').value.trim()},
+      {label:'Slug',ok:!!document.getElementById('p-slug').value.trim()},
+      {label:'Cover image',ok:!!document.getElementById('p-img').value.trim()},
+      {label:'Meta description (120+)',ok:document.getElementById('p-desc').value.length>=120},
+      {label:'Content (200+ words)',ok:document.getElementById('p-body').value.split(/\s+/).filter(Boolean).length>=200},
+    ];
+    document.getElementById('checklist').innerHTML = checks.map(c=>
+      `<div style="display:flex;align-items:center;gap:7px;color:${c.ok?'var(--green)':'var(--muted)'}">
+        <i class="ri-${c.ok?'checkbox-circle':'radio-button'}-line"></i><span>${c.label}</span>
+      </div>`).join('');
+  }
+  updChecklist();
+
+  // ── PUBLISH ──
+  async function publishPost() {
+    const title = document.getElementById('p-title').value.trim();
+    const slug  = document.getElementById('p-slug').value.trim();
+    const body  = document.getElementById('p-body').value.trim();
+    if(!title||!slug||!body){toast('Fill in title, slug and content','error');return;}
+
+    const btn = document.getElementById('pub-btn-sidebar');
+    btn.innerHTML = '<i class="ri-loader-4-line" style="animation:spin 1s linear infinite"></i> Publishing...';
+    btn.disabled = true;
+
+    const postData = {
+      title,
+      slug,
+      category: document.getElementById('p-cat').value,
+      cover_image: document.getElementById('p-img').value.trim(),
+      read_time: document.getElementById('p-readtime').value,
+      meta_desc: document.getElementById('p-desc').value.trim(),
+      keyword: document.getElementById('p-kw').value.trim(),
+      content: body,
+      published: document.getElementById('p-published').checked
+    };
+
+    try {
+      if (supabaseConfigured()) {
+        if (editingId) {
+          await SB.blog.update(editingId, postData);
+          toast('Post updated! Live at: /pages/blog/post.html?slug=' + slug);
+        } else {
+          await SB.blog.insert(postData);
+          toast('Post published! Live at: /pages/blog/post.html?slug=' + slug);
+        }
+      } else {
+        // Fallback localStorage
+        postData.id = editingId || Date.now();
+        postData.created_at = new Date().toISOString();
+        if (editingId) {
+          const p = DB.get('blog_posts')||[];
+          const idx = p.findIndex(x=>x.id==editingId);
+          if(idx>-1){p[idx]={...p[idx],...postData};DB.set('blog_posts',p);}
+        } else {
+          DB.push('blog_posts', postData);
+        }
+        toast('Saved locally (configure Supabase for live publishing)','warning');
+      }
+
+      const resultEl = document.getElementById('publish-result');
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = `<div class="alert alert-success" style="font-size:0.82rem">
+        <i class="ri-checkbox-circle-line"></i>
+        ${editingId?'Updated':'Published'}! 
+        <a href="../pages/blog/post.html?slug=${slug}" target="_blank" style="color:var(--cyan);margin-left:6px">View Post →</a>
+        <a href="../pages/blog/index.html" target="_blank" style="color:var(--cyan);margin-left:6px">View Blog →</a>
+      </div>`;
+
+      btn.innerHTML = '<i class="ri-send-plane-line"></i> ' + (editingId?'Update Post':'Publish Now');
+      btn.disabled = false;
+
+    } catch(err) {
+      toast('Publish failed: ' + err.message, 'error');
+      btn.innerHTML = '<i class="ri-send-plane-line"></i> ' + (editingId?'Update Post':'Publish Now');
+      btn.disabled = false;
+    }
+  }
+
+  loadPosts();
+}
 </script>
 </body>
 </html>
