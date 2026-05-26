@@ -2,13 +2,13 @@ function injectLocalBusinessSchema() {
  const schema = {
  "@context": "https://schema.org",
  "@type": "LocalBusiness",
- "@id": "https://himdigisolutions.ins.in/#business",
+ "@id": "https://himdigisolution.in/#business",
  "name": "HIM Digi Solutions",
  "alternateName": "HIM Digital Solutions",
  "description": "Digital marketing agency in Hosur, Tamil Nadu offering Google Ads, Meta Ads, Social Media Marketing, and Content Creation services.",
- "url": "https://himdigisolutions.ins.in",
- "logo": "https://himdigisolutions.ins.in/images/og-image.jpg",
- "image": "https://himdigisolutions.ins.in/images/himanshu.jpg",
+ "url": "https://himdigisolution.in",
+ "logo": "https://himdigisolution.in/images/og-image.jpg",
+ "image": "https://himdigisolution.in/images/himanshu.jpg",
  "telephone": "+917448340452",
  "email": "bothimanshu57@gmail.com",
  "address": {
@@ -43,7 +43,7 @@ function injectLocalBusinessSchema() {
  "@type": "Person",
  "name": "Himanshu",
  "jobTitle": "Founder & Lead Strategist",
- "url": "https://himdigisolutions.ins.in/pages/about.html",
+ "url": "https://himdigisolution.in/pages/about.html",
  "sameAs": "https://www.linkedin.com/in/himanshu-pathak-s/"
  }
  };
@@ -54,22 +54,22 @@ function injectServicesSchema() {
  {
  name: "Google Ads Management",
  description: "Targeted Google search and display campaigns for local businesses in Tamil Nadu and India.",
- url: "https://himdigisolutions.ins.in/pages/services.html"
+ url: "https://himdigisolution.in/pages/services.html"
  },
  {
  name: "Meta Ads (Facebook & Instagram)",
  description: "Facebook and Instagram advertising campaigns crafted with audience psychology and creative storytelling.",
- url: "https://himdigisolutions.ins.in/pages/services.html"
+ url: "https://himdigisolution.in/pages/services.html"
  },
  {
  name: "Social Media Marketing",
  description: "Full social media management including content calendar, posting, and community management.",
- url: "https://himdigisolutions.ins.in/pages/services.html"
+ url: "https://himdigisolution.in/pages/services.html"
  },
  {
  name: "Content Creation",
  description: "Short-form video, reels, graphics, and brand content creation rooted in filmmaking and storytelling.",
- url: "https://himdigisolutions.ins.in/pages/services.html"
+ url: "https://himdigisolution.in/pages/services.html"
  }
  ];
  const schema = {
@@ -87,7 +87,7 @@ function injectServicesSchema() {
  "provider": {
  "@type": "LocalBusiness",
  "name": "HIM Digi Solutions",
- "url": "https://himdigisolutions.ins.in"
+ "url": "https://himdigisolution.in"
  }
  }
  }))
@@ -101,8 +101,8 @@ function injectPersonSchema() {
  "name": "Himanshu",
  "jobTitle": "Founder & Lead Digital Marketing Strategist",
  "description": "Filmmaker-turned-digital-marketer helping local businesses grow in Hosur, Tamil Nadu through Google Ads, Meta Ads, and content strategy.",
- "url": "https://himdigisolutions.ins.in/pages/about.html",
- "image": "https://himdigisolutions.ins.in/images/himanshu.jpg",
+ "url": "https://himdigisolution.in/pages/about.html",
+ "image": "https://himdigisolution.in/images/himanshu.jpg",
  "email": "bothimanshu57@gmail.com",
  "telephone": "+917448340452",
  "address": {
@@ -114,7 +114,7 @@ function injectPersonSchema() {
  "worksFor": {
  "@type": "LocalBusiness",
  "name": "HIM Digi Solutions",
- "url": "https://himdigisolutions.ins.in"
+ "url": "https://himdigisolution.in"
  },
  "sameAs": [
  "https://www.linkedin.com/in/himanshu-pathak-s/",
@@ -147,7 +147,7 @@ function injectBreadcrumbSchema(crumbs) {
  "@type": "ListItem",
  "position": i + 1,
  "name": c.name,
- "item": "https://himdigisolutions.ins.in" + c.path
+ "item": "https://himdigisolution.in" + c.path
  }))
  };
  _injectSchema(schema);
@@ -162,12 +162,12 @@ function injectArticleSchema(article) {
  "author": {
  "@type": "Person",
  "name": "Himanshu",
- "url": "https://himdigisolutions.ins.in/pages/about.html"
+ "url": "https://himdigisolution.in/pages/about.html"
  },
  "publisher": {
  "@type": "Organization",
  "name": "HIM Digi Solutions",
- "logo": { "@type": "ImageObject", "url": "https://himdigisolutions.ins.in/images/og-image.jpg" }
+ "logo": { "@type": "ImageObject", "url": "https://himdigisolution.in/images/og-image.jpg" }
  },
  "datePublished": article.date,
  "dateModified": article.date,

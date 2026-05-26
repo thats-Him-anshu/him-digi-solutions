@@ -5,9 +5,9 @@
 
 // ── CREDENTIALS (Change these!) ──
 const ADMIN_USERS = [
-  { id:1, email:'himanshu@himdigisolutions.in', password:'HimDigi@2026', name:'Himanshu', role:'admin', avatar:'H' },
-  { id:2, email:'editor@himdigisolutions.in',   password:'Editor@2026',  name:'Editor',   role:'editor', avatar:'E' },
-  { id:3, email:'staff@himdigisolutions.in',     password:'Staff@2026',   name:'Staff',    role:'staff', avatar:'S' },
+  { id:1, email:'himanshu@himdigisolution.in', password:'HimDigi@2026', name:'Himanshu', role:'admin', avatar:'H' },
+  { id:2, email:'editor@himdigisolution.in',   password:'Editor@2026',  name:'Editor',   role:'editor', avatar:'E' },
+  { id:3, email:'staff@himdigisolution.in',     password:'Staff@2026',   name:'Staff',    role:'staff', avatar:'S' },
 ];
 
 // ── DATA STORE (localStorage) ──

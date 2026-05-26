@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://himdigisolutions.in/</loc>
-  </url>
-
-  <url>
-    <loc>https://himdigisolutions.in/about.html</loc>
-  </url>
-
-  <url>
-    <loc>https://himdigisolutions.in/services.html</loc>
-  </url>
-
-  <url>
-    <loc>https://himdigisolutions.in/contact.html</loc>
-  </url>
-
+  <url><loc>https://himdigisolution.in/</loc><priority>1.0</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/pages/services.html</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/pages/about.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/pages/contact.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/pages/pricing.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/pages/faq.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/blog/index.html</loc><priority>0.8</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://himdigisolution.in/blog/google-ads-local-business-india.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/blog/meta-ads-cost-india-2026.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://himdigisolution.in/blog/social-media-marketing-hosur.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>
