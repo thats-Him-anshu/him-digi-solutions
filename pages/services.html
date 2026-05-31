@@ -1,50 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NLJ775S5');</script>
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-NLJ775S5');</script>
   <!-- End Google Tag Manager -->
   <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1000689375717976');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1000689375717976');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18051983594"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18051983594"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'AW-18051983594');
-</script>
+    gtag('config', 'AW-18051983594');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Services — HIM Digi Solutions</title>
-  <meta name="description" content="Google Ads, Meta Ads, Social Media Marketing, and Content Creation services by HIM Digi Solutions, Hosur." />
+  <meta name="description"
+    content="Google Ads, Meta Ads, Social Media Marketing, and Content Creation services by HIM Digi Solutions, Hosur." />
   <!-- Google Search Console -->
   <meta name="google-site-verification" content="a9TUlWzMV-1_qzaaVZ9f9XbYa_DRbA9KZMYCYnsiIds" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <script>
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        if (typeof trackWhatsAppClick === 'function') trackWhatsAppClick(window.location.pathname);
+      });
+    });
+  </script>
+
   <style>
-    .services-page { padding-bottom: 100px; }
+    .services-page {
+      padding-bottom: 100px;
+    }
 
     .services-list {
       max-width: var(--max-width);
@@ -61,8 +80,14 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       gap: 64px;
       align-items: center;
     }
-    .service-block.reverse { direction: rtl; }
-    .service-block.reverse > * { direction: ltr; }
+
+    .service-block.reverse {
+      direction: rtl;
+    }
+
+    .service-block.reverse>* {
+      direction: ltr;
+    }
 
     .service-block-visual {
       border-radius: var(--radius-lg);
@@ -70,6 +95,7 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       min-height: 380px;
       position: relative;
     }
+
     .service-block-visual img {
       width: 100%;
       height: 100%;
@@ -79,10 +105,12 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       transition: transform 0.6s ease, filter 0.6s ease;
       min-height: 380px;
     }
+
     .service-block:hover .service-block-visual img {
       transform: scale(1.04);
       filter: brightness(0.5);
     }
+
     .service-block-visual-overlay {
       position: absolute;
       inset: 0;
@@ -90,10 +118,12 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       flex-direction: column;
       justify-content: flex-end;
       padding: 32px;
-      background: linear-gradient(to top, rgba(10,10,15,0.85) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(10, 10, 15, 0.85) 0%, transparent 55%);
     }
+
     .service-block-icon {
-      width: 52px; height: 52px;
+      width: 52px;
+      height: 52px;
       border-radius: 12px;
       background: var(--orange);
       color: white;
@@ -103,10 +133,12 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       font-size: 1.4rem;
       margin-bottom: 14px;
     }
+
     .service-block-visual.cyan-bg .service-block-icon {
       background: var(--cyan);
       color: var(--dark);
     }
+
     .service-block-visual-label {
       font-family: var(--font-display);
       font-size: 1.3rem;
@@ -115,13 +147,18 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
     }
 
     .service-block-content {}
-    .service-block-content .section-label { margin-bottom: 12px; }
+
+    .service-block-content .section-label {
+      margin-bottom: 12px;
+    }
+
     .service-block-content h2 {
       font-size: clamp(1.6rem, 3vw, 2.2rem);
       font-weight: 800;
       color: var(--white);
       margin-bottom: 16px;
     }
+
     .service-block-content p {
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -135,6 +172,7 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       gap: 12px;
       margin-bottom: 32px;
     }
+
     .service-feature {
       display: flex;
       align-items: center;
@@ -142,6 +180,7 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       font-size: 0.9rem;
       color: var(--text);
     }
+
     .service-feature i {
       color: var(--cyan);
       font-size: 1rem;
@@ -154,8 +193,8 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
       align-items: center;
       gap: 8px;
       padding: 10px 18px;
-      background: rgba(0,212,232,0.07);
-      border: 1px solid rgba(0,212,232,0.18);
+      background: rgba(0, 212, 232, 0.07);
+      border: 1px solid rgba(0, 212, 232, 0.18);
       border-radius: 8px;
       font-size: 0.85rem;
       color: var(--cyan);
@@ -170,154 +209,193 @@ src="https://www.facebook.com/tr?id=1000689375717976&ev=PageView&noscript=1"
     }
 
     @media (max-width: 900px) {
-      .service-block { grid-template-columns: 1fr; gap: 36px; }
-      .service-block.reverse { direction: ltr; }
+      .service-block {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .service-block.reverse {
+        direction: ltr;
+      }
     }
   </style>
 </head>
+
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLJ775S5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NLJ775S5" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-<!-- ══════════════ PAGE HEADER ══════════════ -->
-<div class="page-header">
-  <div class="section-label reveal" style="justify-content:center">What We Do</div>
-  <h1 class="reveal reveal-delay-1">Our <span style="color:var(--orange)">Services</span></h1>
-  <p class="reveal reveal-delay-2">Every service we offer is built around one goal — measurable growth for your business.</p>
-</div>
-
-<div class="services-page">
-  <div class="services-list">
-
-    <!-- Service 1: Google Ads -->
-    <div class="service-block reveal">
-      <div class="service-block-visual">
-        <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&q=80&auto=format&fit=crop" alt="Google Ads Campaign" />
-        <div class="service-block-visual-overlay">
-          <div class="service-block-icon"><i class="ri-google-fill"></i></div>
-          <div class="service-block-visual-label">Google Ads / PPC</div>
-        </div>
-      </div>
-      <div class="service-block-content">
-        <div class="section-label">Service 01</div>
-        <h2>Google Ads <span style="color:var(--orange)">&amp; PPC Campaigns</span></h2>
-        <p>When someone in your city searches for what you offer — we make sure they find you first. We set up, manage, and continuously optimize search, display, and shopping campaigns that bring real traffic and real leads.</p>
-        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Custom pricing based on your ad budget</div>
-        <div class="service-features">
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Keyword research &amp; competitor analysis</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Ad copywriting &amp; creative</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Bid strategy &amp; budget management</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Conversion tracking setup</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Monthly performance reports</div>
-        </div>
-        <a href="contact.html" class="btn btn-primary">Get Started →</a>
-      </div>
-    </div>
-
-    <div class="glow-divider"></div>
-
-    <!-- Service 2: Meta Ads -->
-    <div class="service-block reverse reveal">
-      <div class="service-block-visual cyan-bg">
-        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&auto=format&fit=crop" alt="Meta Ads Facebook Instagram" />
-        <div class="service-block-visual-overlay">
-          <div class="service-block-icon"><i class="ri-facebook-circle-fill"></i></div>
-          <div class="service-block-visual-label">Meta Ads (FB + Instagram)</div>
-        </div>
-      </div>
-      <div class="service-block-content">
-        <div class="section-label" style="color:var(--cyan)">Service 02</div>
-        <h2>Meta Ads <span style="color:var(--cyan)">(Facebook &amp; Instagram)</span></h2>
-        <p>Meta Ads is where storytelling meets performance. With a background in filmmaking and audience psychology, we build ad creatives that stop the scroll and campaigns that convert — not just generate impressions.</p>
-        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Custom pricing based on your ad budget</div>
-        <div class="service-features">
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Audience research &amp; targeting strategy</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Ad creative &amp; copywriting</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Retargeting &amp; lookalike audiences</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> A/B testing for best performance</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Lead generation &amp; conversion campaigns</div>
-        </div>
-        <a href="contact.html" class="btn btn-cyan">Get Started →</a>
-      </div>
-    </div>
-
-    <div class="glow-divider"></div>
-
-    <!-- Service 3: Social Media Marketing -->
-    <div class="service-block reveal">
-      <div class="service-block-visual">
-        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&auto=format&fit=crop" alt="Social Media Marketing" />
-        <div class="service-block-visual-overlay">
-          <div class="service-block-icon"><i class="ri-instagram-line"></i></div>
-          <div class="service-block-visual-label">Social Media Marketing</div>
-        </div>
-      </div>
-      <div class="service-block-content">
-        <div class="section-label">Service 03</div>
-        <h2>Social Media <span style="color:var(--orange)">Marketing</span></h2>
-        <p>Your social profiles are your digital storefront. We build consistent, on-brand social media presences that grow your following, build trust, and turn followers into paying customers.</p>
-        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Monthly retainer packages available</div>
-        <div class="service-features">
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Profile optimization (Instagram, Facebook)</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Content calendar &amp; scheduling</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Reels, posts, stories creation</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Community management &amp; engagement</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Monthly analytics &amp; growth report</div>
-        </div>
-        <a href="contact.html" class="btn btn-primary">Get Started →</a>
-      </div>
-    </div>
-
-    <div class="glow-divider"></div>
-
-    <!-- Service 4: Content Creation -->
-    <div class="service-block reverse reveal">
-      <div class="service-block-visual cyan-bg">
-        <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&q=80&auto=format&fit=crop" alt="Content Creation Video" />
-        <div class="service-block-visual-overlay">
-          <div class="service-block-icon"><i class="ri-video-line"></i></div>
-          <div class="service-block-visual-label">Content Creation</div>
-        </div>
-      </div>
-      <div class="service-block-content">
-        <div class="section-label" style="color:var(--cyan)">Service 04</div>
-        <h2>Content <span style="color:var(--cyan)">Creation</span></h2>
-        <p>Content is the engine of modern marketing. Himanshu started as a filmmaker — which means every piece of content we create is built with a story arc, audience psychology, and an emotional hook. Not just pretty visuals.</p>
-        <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Per-project &amp; monthly packages</div>
-        <div class="service-features">
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Short-form video &amp; Reels production</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Script writing &amp; storyboarding</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Graphic design &amp; brand visuals</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Product &amp; brand photography direction</div>
-          <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Content strategy &amp; ideation</div>
-        </div>
-        <a href="contact.html" class="btn btn-cyan">Get Started →</a>
-      </div>
-    </div>
-
+  <!-- ══════════════ PAGE HEADER ══════════════ -->
+  <div class="page-header">
+    <div class="section-label reveal" style="justify-content:center">What We Do</div>
+    <h1 class="reveal reveal-delay-1">Our <span style="color:var(--orange)">Services</span></h1>
+    <p class="reveal reveal-delay-2">Every service we offer is built around one goal — measurable growth for your
+      business.</p>
   </div>
-</div>
 
-<!-- CTA -->
-<section style="padding:80px 24px;">
-  <div class="cta-inner reveal" style="max-width:var(--max-width);margin:0 auto;background:var(--dark-2);border:1px solid var(--dark-4);border-radius:24px;padding:64px;text-align:center;position:relative;overflow:hidden;">
-    <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--white);margin-bottom:12px">Not Sure Which Service You Need?</h2>
-    <p style="color:var(--text-muted);margin-bottom:32px">Let's talk. A free 30-minute audit will tell us exactly what will move the needle for your business.</p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="contact.html" class="btn btn-primary">Book Free Audit →</a>
-      <a href="https://wa.me/917448340452" class="btn btn-outline" target="_blank"><i class="ri-whatsapp-line"></i> WhatsApp Us</a>
+  <div class="services-page">
+    <div class="services-list">
+
+      <!-- Service 1: Google Ads -->
+      <div class="service-block reveal">
+        <div class="service-block-visual">
+          <img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=800&q=80&auto=format&fit=crop"
+            alt="Google Ads Campaign" />
+          <div class="service-block-visual-overlay">
+            <div class="service-block-icon"><i class="ri-google-fill"></i></div>
+            <div class="service-block-visual-label">Google Ads / PPC</div>
+          </div>
+        </div>
+        <div class="service-block-content">
+          <div class="section-label">Service 01</div>
+          <h2>Google Ads <span style="color:var(--orange)">&amp; PPC Campaigns</span></h2>
+          <p>When someone in your city searches for what you offer — we make sure they find you first. We set up,
+            manage, and continuously optimize search, display, and shopping campaigns that bring real traffic and real
+            leads.</p>
+          <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Custom pricing based on your ad budget
+          </div>
+          <div class="service-features">
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Keyword research &amp; competitor
+              analysis</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Ad copywriting &amp; creative</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Bid strategy &amp; budget management
+            </div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Conversion tracking setup</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Monthly performance reports</div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="glow-divider"></div>
+
+      <!-- Service 2: Meta Ads -->
+      <div class="service-block reverse reveal">
+        <div class="service-block-visual cyan-bg">
+          <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800&q=80&auto=format&fit=crop"
+            alt="Meta Ads Facebook Instagram" />
+          <div class="service-block-visual-overlay">
+            <div class="service-block-icon"><i class="ri-facebook-circle-fill"></i></div>
+            <div class="service-block-visual-label">Meta Ads (FB + Instagram)</div>
+          </div>
+        </div>
+        <div class="service-block-content">
+          <div class="section-label" style="color:var(--cyan)">Service 02</div>
+          <h2>Meta Ads <span style="color:var(--cyan)">(Facebook &amp; Instagram)</span></h2>
+          <p>Meta Ads is where storytelling meets performance. With a background in filmmaking and audience psychology,
+            we build ad creatives that stop the scroll and campaigns that convert — not just generate impressions.</p>
+          <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Custom pricing based on your ad budget
+          </div>
+          <div class="service-features">
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Audience research &amp; targeting
+              strategy</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Ad creative &amp; copywriting</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Retargeting &amp; lookalike audiences
+            </div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> A/B testing for best performance</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Lead generation &amp; conversion
+              campaigns</div>
+          </div>
+          <a href="contact.html" class="btn btn-cyan">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="glow-divider"></div>
+
+      <!-- Service 3: Social Media Marketing -->
+      <div class="service-block reveal">
+        <div class="service-block-visual">
+          <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&q=80&auto=format&fit=crop"
+            alt="Social Media Marketing" />
+          <div class="service-block-visual-overlay">
+            <div class="service-block-icon"><i class="ri-instagram-line"></i></div>
+            <div class="service-block-visual-label">Social Media Marketing</div>
+          </div>
+        </div>
+        <div class="service-block-content">
+          <div class="section-label">Service 03</div>
+          <h2>Social Media <span style="color:var(--orange)">Marketing</span></h2>
+          <p>Your social profiles are your digital storefront. We build consistent, on-brand social media presences that
+            grow your following, build trust, and turn followers into paying customers.</p>
+          <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Monthly retainer packages available
+          </div>
+          <div class="service-features">
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Profile optimization (Instagram,
+              Facebook)</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Content calendar &amp; scheduling</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Reels, posts, stories creation</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Community management &amp; engagement
+            </div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Monthly analytics &amp; growth report
+            </div>
+          </div>
+          <a href="contact.html" class="btn btn-primary">Get Started →</a>
+        </div>
+      </div>
+
+      <div class="glow-divider"></div>
+
+      <!-- Service 4: Content Creation -->
+      <div class="service-block reverse reveal">
+        <div class="service-block-visual cyan-bg">
+          <img src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=800&q=80&auto=format&fit=crop"
+            alt="Content Creation Video" />
+          <div class="service-block-visual-overlay">
+            <div class="service-block-icon"><i class="ri-video-line"></i></div>
+            <div class="service-block-visual-label">Content Creation</div>
+          </div>
+        </div>
+        <div class="service-block-content">
+          <div class="section-label" style="color:var(--cyan)">Service 04</div>
+          <h2>Content <span style="color:var(--cyan)">Creation</span></h2>
+          <p>Content is the engine of modern marketing. Himanshu started as a filmmaker — which means every piece of
+            content we create is built with a story arc, audience psychology, and an emotional hook. Not just pretty
+            visuals.</p>
+          <div class="service-pricing-hint"><i class="ri-price-tag-3-line"></i> Per-project &amp; monthly packages</div>
+          <div class="service-features">
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Short-form video &amp; Reels production
+            </div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Script writing &amp; storyboarding
+            </div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Graphic design &amp; brand visuals
+            </div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Product &amp; brand photography
+              direction</div>
+            <div class="service-feature"><i class="ri-checkbox-circle-line"></i> Content strategy &amp; ideation</div>
+          </div>
+          <a href="contact.html" class="btn btn-cyan">Get Started →</a>
+        </div>
+      </div>
+
     </div>
   </div>
-</section>
 
-<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","w8u5elv9se");</script>
-<script src="../js/components.js"></script>
-<script>
-  injectNavbar('services');
-  injectFooter(false);
-</script>
-<script src="../js/main.js"></script>
+  <!-- CTA -->
+  <section style="padding:80px 24px;">
+    <div class="cta-inner reveal"
+      style="max-width:var(--max-width);margin:0 auto;background:var(--dark-2);border:1px solid var(--dark-4);border-radius:24px;padding:64px;text-align:center;position:relative;overflow:hidden;">
+      <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:var(--white);margin-bottom:12px">Not Sure
+        Which Service You Need?</h2>
+      <p style="color:var(--text-muted);margin-bottom:32px">Let's talk. A free 30-minute audit will tell us exactly what
+        will move the needle for your business.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn-primary">Book Free Audit →</a>
+        <a href="https://wa.me/917448340452" class="btn btn-outline" target="_blank"><i class="ri-whatsapp-line"></i>
+          WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <script
+    type="text/javascript">(function (c, l, a, r, i, t, y) { c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) }; t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i; y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y) })(window, document, "clarity", "script", "w8u5elv9se");</script>
+  <script src="../js/components.js"></script>
+  <script>
+    injectNavbar('services');
+    injectFooter(false);
+  </script>
+  <script src="../js/main.js"></script>
 </body>
+
 </html>

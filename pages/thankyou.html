@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You — HIM Digi Solutions</title>
+  <meta name="description" content="Thank you for reaching out to HIM Digi Solutions. We'll get back to you within 24 hours." />
+
+  <!-- NO INDEX — thank you pages should not appear in Google -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Search Console -->
+  <meta name="google-site-verification" content="a9TUlWzMV-1_qzaaVZ9f9XbYa_DRbA9KZMYCYnsiIds" />
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .thankyou-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thankyou-bg-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 500px;
+      background: radial-gradient(ellipse, rgba(255,107,43,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .thankyou-card {
+      background: var(--dark-2);
+      border: 1px solid var(--dark-4);
+      border-radius: 24px;
+      padding: 64px 56px;
+      max-width: 640px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: cardIn 0.6s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .thankyou-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--cyan));
+    }
+
+    .success-icon-wrap {
+      width: 80px; height: 80px;
+      background: rgba(37,211,102,0.1);
+      border: 2px solid rgba(37,211,102,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 2rem;
+      color: #25D366;
+      animation: popIn 0.5s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .thankyou-card h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .thankyou-card h1 span { color: var(--orange); }
+
+    .thankyou-card > p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .next-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .next-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--dark-3);
+      border: 1px solid var(--dark-4);
+      border-radius: 10px;
+    }
+
+    .next-step-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(255,107,43,0.12);
+      border: 1px solid rgba(255,107,43,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .next-step:nth-child(2) .next-step-num {
+      background: rgba(0,212,232,0.1);
+      border-color: rgba(0,212,232,0.25);
+      color: var(--cyan);
+    }
+
+    .next-step:nth-child(3) .next-step-num {
+      background: rgba(37,211,102,0.1);
+      border-color: rgba(37,211,102,0.25);
+      color: #25D366;
+    }
+
+    .next-step-text {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .next-step-text strong {
+      display: block;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .thankyou-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .countdown {
+      margin-top: 28px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .countdown span { color: var(--cyan); font-weight: 600; }
+
+    @media (max-width: 600px) {
+      .thankyou-card { padding: 40px 24px; }
+      .thankyou-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript injected by tracking.js -->
+
+<div class="thankyou-page">
+  <div class="thankyou-bg-glow"></div>
+
+  <div class="thankyou-card">
+    <div class="success-icon-wrap">
+      <i class="ri-check-line"></i>
+    </div>
+
+    <h1>You're All Set, <span>Let's Grow!</span></h1>
+    <p>Your free audit request has been received. Himanshu will personally review your digital presence and get back to you within 24 hours — check your email and WhatsApp.</p>
+
+    <div class="next-steps">
+      <div class="next-step">
+        <div class="next-step-num">1</div>
+        <div class="next-step-text">
+          <strong>Check Your Email</strong>
+          A confirmation has been sent. Keep an eye on your inbox (and spam folder just in case).
+        </div>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">2</div>
+        <div class="next-step-text">
+          <strong>Expect a WhatsApp Message</strong>
+          Himanshu will reach out on WhatsApp within 24 hours to discuss your audit.
+        </div>
+      </div>
+      <div class="next-step">
+        <div class="next-step-num">3</div>
+        <div class="next-step-text">
+          <strong>Prepare for Your Strategy Call</strong>
+          Think about your current biggest marketing challenge — we'll solve it together.
+        </div>
+      </div>
+    </div>
+
+    <div class="thankyou-actions">
+      <a href="https://wa.me/917448340452?text=Hi%20Himanshu!%20I%20just%20submitted%20the%20audit%20form%20on%20your%20website."
+         class="btn btn-primary" target="_blank"
+         onclick="trackWhatsAppClick('thank_you_page')">
+        <i class="ri-whatsapp-line"></i> Message on WhatsApp
+      </a>
+      <a href="../index.html" class="btn btn-outline">← Back to Home</a>
+    </div>
+
+    <div class="countdown">
+      Redirecting to homepage in <span id="countdown">10</span> seconds...
+    </div>
+  </div>
+</div>
+
+<!-- TRACKING: All conversion events fire here -->
+<script src="../js/tracking.js"></script>
+<script>
+  // ── Fire all conversion events on page load ──
+  window.addEventListener('load', function() {
+
+    // Get form data from URL params if passed
+    var params = new URLSearchParams(window.location.search);
+    var formData = {
+      service: params.get('service') || 'General Enquiry',
+      source:  params.get('source')  || 'contact_form'
+    };
+
+    // Fire all pixels
+    trackFormSubmit(formData);
+
+    // GTM noscript
+    injectGTMNoscript();
+
+    // Countdown redirect
+    var count = 10;
+    var el = document.getElementById('countdown');
+    var timer = setInterval(function() {
+      count--;
+      if (el) el.textContent = count;
+      if (count <= 0) {
+        clearInterval(timer);
+        window.location.href = '../index.html';
+      }
+    }, 1000);
+  });
+</script>
+
+<!-- Meta Pixel noscript fallback -->
+<noscript>
+  <img loading="lazy" height="1" width="1" style="display:none"
+       src="https://www.facebook.com/tr?id=YOUR_META_PIXEL_ID&ev=Lead&noscript=1" />
+</noscript>
+
+<script src="../js/components.js"></script>
+<script>
+  injectNavbar('contact');
+  injectFooter(false);
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>
